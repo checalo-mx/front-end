@@ -1,14 +1,1 @@
-Estructura: 
-
-Components
-    Splash - Emi
-    Buttons
-    Login - Nancy
-    Signup - Nancy
-    Scanner
-    Lists
-    Recipes - Paco
-    Home - Emi
-    User profile - César
-    Navbar - Emi
-    Down menu - Emi
+Para cuando se clone el repo, en terminal hay que correr un npm install 
