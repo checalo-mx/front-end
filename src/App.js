@@ -1,23 +1,16 @@
 import React from "react";
-import BarcodeScannerComponent from "react-qr-barcode-scanner";
+// import BarcodeScannerComponent from "react-qr-barcode-scanner";
+import Button from '@mui/material/Button';
+import PrimaryButton from "./Components/Buttons/Primary/PrimaryButton";
+
 
 function App() {
   const [data, setData] = React.useState("Not Found");
 
   return (
     <>
-      <BarcodeScannerComponent
-        width={500}
-        height={500}
-        onUpdate={(err, result) => {
-          if (result){
-            setData(result.text);
-            alert(result.text)
-          } 
-          else setData("Not Found");
-        }}
-      />
-      <p>{data}</p>
+    <PrimaryButton color="error">Login</PrimaryButton>
+    <PrimaryButton color="secondary">sign in</PrimaryButton>
     </>
   );
 }
