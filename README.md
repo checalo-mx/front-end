@@ -1,7 +1,7 @@
 Estructura: 
 
 Components
-    Splash
+    Splash - Emi
     Buttons
     Login - Nancy
     Signup - Nancy
