@@ -3,7 +3,7 @@ import React from 'react'
 
 const PrimaryButton = (props) => {
     return (
-    <Button color={props.color} variant="contained">{props.children}</Button>
+    <Button fullWidth color={props.color} variant="contained">{props.children}</Button>
     )
 }
 
