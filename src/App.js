@@ -5,14 +5,13 @@ import Button from '@mui/material/Button';
 import MainCard from "./Components/Cards/MainCard";
 
 
+
 function App() {
   const [data, setData] = React.useState("Not Found");
 
   return (
     <>
-    {/* <PrimaryButton color="error">Login</PrimaryButton>
-    <PrimaryButton color="secondary">sign in</PrimaryButton> */}
-    <MainCard/>
+
     </>
   );
 }
