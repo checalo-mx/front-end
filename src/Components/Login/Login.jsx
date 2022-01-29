@@ -6,6 +6,9 @@ import styles from "./Login.module.scss";
 import PrimaryButton from "../Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import { grid } from "@mui/system";
+import CardTitle from "../Titles/CardTitle";
+
 
 const Login = (props) => {
   return (
@@ -13,6 +16,9 @@ const Login = (props) => {
       <Background />
       <MainCard>
         <Grid container spacing={{ xs: 2 }} justifyContent="center">
+          <Grid item xc={10}>
+            <CardTitle titleText="¡Bienvenido!"/>
+          </Grid>
           <Grid item xs={10}>
               <InputForm label="Correo electrónico" />
           </Grid>
