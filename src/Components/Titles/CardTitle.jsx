@@ -1,10 +1,14 @@
-import Button from '@mui/material/Button';
-import React from 'react'
+// TitleComponent.jsx
+
+import React from 'react';
 
 const CardTitle = (props) => {
-    return (
-    <Button color={props.color} variant="contained">{props.children}</Button>
-    )
-}
+    var defaultTitle = "I'm a title";
+  return <div>
+      <h1>
+        {props.titleText ? props.titleText : defaultTitle}
+      </h1>
+  </div>;
+};
 
-export default CardTitle
+export default CardTitle;
