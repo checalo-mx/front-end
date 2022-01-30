@@ -1,0 +1,12 @@
+@import "../../vars.scss";
+
+.nav_container{
+    background-color: $primary-color;
+    min-width: 22.5rem;
+    min-height: 5rem;
+    max-width: 100%;
+    
+    .nav_icon{
+       margin: 0 2rem; 
+    }
+}
