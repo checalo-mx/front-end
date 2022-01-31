@@ -64,7 +64,7 @@ const Login = (props) => {
             </Grid>
             <Grid item xs={10}>
               <PrimaryButton
-                children="Iniciar sesión"
+                buttonText="Iniciar sesión"
                 color="secondary"
                 type="submit"
               />

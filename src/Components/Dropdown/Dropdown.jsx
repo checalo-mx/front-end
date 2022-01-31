@@ -18,4 +18,4 @@ function Dropdown (props) {
     )
 }
 
-export default Dropdown
+export default Dropdown;
