@@ -8,7 +8,9 @@ function CheckboxGroup (props) {
     return (
         <FormGroup>
             { props.label ? <FormLabel>{props.label}</FormLabel> : <></> }
-            { props.arrayOptions.map(option => <FormControlLabel label={option} control={<Checkbox defaultChecked />} />)}
+            { props.arrayOptions.map(option => <FormControlLabel key={option} label={option} value={props.value} control={<Checkbox name={option} checked={props.state[option]} onChange={props.onChangeValue}
+ 
+ />} />)}
         </FormGroup>
     )
 }

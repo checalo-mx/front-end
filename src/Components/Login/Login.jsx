@@ -17,7 +17,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password); //ELIMINAR
+  
     fetch("https://checalo-mx-api.herokuapp.com/login", {
       method: "POST",
       body: JSON.stringify({ userName: email, password: password }), // data can be `string` or {object}!
