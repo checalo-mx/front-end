@@ -1,22 +1,85 @@
 import { Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import BackButton from '../Buttons/BackButton';
 import PrimaryButton from '../Buttons/Primary/PrimaryButton';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import Dropdown from '../Dropdown/Dropdown';
 import InputForm from '../Inputs/InputForm';
 import CardTitle from '../Titles/CardTitle';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-
 
 const Signup = () => {
-  return <div>
-    <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
-        <ArrowBackIosNewIcon>ArrowBackIosNewIcon</ArrowBackIosNewIcon>
-      </Grid>
-    </Grid>
+  const[allergies, setAllergies] =useState ([]);
+  const[diets, setDiets] =useState ([]);
 
-    <form>
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [diet, setDiet] = useState("");
+  const [userAllergies, setUserAllergies] = useState({});
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit=(e) => { 
+      e.preventDefault();
+
+      fetch("https://checalo-mx-api.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify({ name,lastName, email, password, typeOfDiet:diet, allergies:userAllergies}), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => console.log("Success:", response))
+      .catch((error) => console.error("Error:", error));
+  };
+
+  useEffect(() => {
+    fetch("https://checalo-mx-api.herokuapp.com/signup").then((result) =>
+      result.json().then((data) => {
+        setAllergies(data.allergies);
+        setDiets(data.namesOfDiet)
+        setUserAllergies(data.allergies.reduce((accum, current)=>({...accum,[current]:false}),{}))
+      })
+    );
+  }, []);
+
+  
+  const handleChangeName = (value) => {
+    setName(value);
+   };
+
+  const handleLastName = (value) => {
+    setLastName(value);
+   };
+
+   const handleEmail = (value) => {
+    setEmail(value);
+   };
+
+   const handlePassword = (value) => {
+    setPassword(value);
+   };
+   const handleConfirmPassword = (value) => {
+    setConfirmPassword(value);
+   };
+  
+   const handleDiet = (value) => {
+    setDiet(value);
+   };
+
+   const handleUserAllergies = (event) => {
+    setUserAllergies({...userAllergies,[event.target.name]:event.target.checked});
+   };
+
+
+   
+  return <div>
+
+    <BackButton/>
+
+
+    <form onSubmit={handleSubmit}>
       <Grid container spacing= {{xs:2}} alignItems="center"  justifyContent="center">
         
         <Grid item xs={10}>
@@ -31,47 +94,57 @@ const Signup = () => {
           <InputForm
             label="Nombre"
             type="text"
-            // value={fullName}
+            value={name}
+            onChangeValue={handleChangeName}
           />
         </Grid>
         <Grid item xs={10}>
           <InputForm
             label="Apellido"
             type="text"
-            // value={fullName}
+            value={lastName}
+            onChangeValue={handleLastName}
           />
         </Grid>
         <Grid item xs={10}>
           <InputForm
             label="Email"
             type="text"
-            // value={fullName}
+            value={email}
+            onChangeValue={handleEmail}
           />
         </Grid>
         <Grid item xs={10}>
           <InputForm
             label="Contraseña"
             type="password"
-            // value={fullName}
+            value={password}
+            onChangeValue={handlePassword}
           />
         </Grid>
         <Grid item xs={10}>
           <InputForm
             label="Confirmar contraseña"
             type="password"
-            // value={fullName}
+            value={confirmPassword}
+            onChangeValue={handleConfirmPassword}
           />
         </Grid>
         <Grid item xs={10}>
           <Dropdown
             label="Tipo de dieta"
-            arrayOptions={["random1", "randon2"]}
+            arrayOptions={diets}
+            value={diet}
+            onChangeValue={handleDiet}
           />
         </Grid>
         <Grid item xs={10}>
           <CheckboxGroup
           label="Alergias"
-          arrayOptions={["random1", "randon2"]}
+          arrayOptions={allergies}
+          value={userAllergies}
+          onChangeValue={handleUserAllergies}
+          state={userAllergies} 
           />
         </Grid>
         <Grid item xs={10}>

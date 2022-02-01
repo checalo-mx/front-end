@@ -8,10 +8,12 @@ function Dropdown (props) {
         <FormControl fullWidth>
             { props.label ? <InputLabel>{props.label}</InputLabel> : <></> }
             <Select
+                value={props.value}
                 label={props.label}
+                onChange={(e)=>props.onChangeValue(e.target.value)}
             >
                 {
-                    props.arrayOptions.map(option => <MenuItem value={option}>{option}</MenuItem>)
+                    props.arrayOptions.map(option => <MenuItem key={option} value={option}>{option}</MenuItem>)
                 }
             </Select>
         </FormControl>
