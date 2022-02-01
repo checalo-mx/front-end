@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import BackButton from '../Buttons/BackButton';
 import PrimaryButton from '../Buttons/Primary/PrimaryButton';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import Dropdown from '../Dropdown/Dropdown';
 import InputForm from '../Inputs/InputForm';
 import CardTitle from '../Titles/CardTitle';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const Signup = () => {
   const[allergies, setAllergies] =useState ([]);
@@ -75,11 +75,9 @@ const Signup = () => {
 
    
   return <div>
-    <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
-        <ArrowBackIosNewIcon>ArrowBackIosNewIcon</ArrowBackIosNewIcon>
-      </Grid>
-    </Grid>
+
+    <BackButton/>
+
 
     <form onSubmit={handleSubmit}>
       <Grid container spacing= {{xs:2}} alignItems="center"  justifyContent="center">
