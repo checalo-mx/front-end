@@ -10,6 +10,7 @@ import { grid } from "@mui/system";
 import CardTitle from "../Titles/CardTitle";
 import { useState } from "react";
 import { isValidDateValue } from "@testing-library/user-event/dist/utils";
+import Link from '@mui/material/Link';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const Login = (props) => {
   
     fetch("https://checalo-mx-api.herokuapp.com/login", {
       method: "POST",
-      body: JSON.stringify({ userName: email, password: password }), // data can be `string` or {object}!
+      body: JSON.stringify({ email, password }), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
       },
@@ -68,6 +69,9 @@ const Login = (props) => {
                 color="secondary"
                 type="submit"
               />
+            </Grid>
+            <Grid item xs={10}>
+              <p>¿No tienes cuenta? <Link href="#" color="primary" underline="none">Registrate</Link></p>
             </Grid>
           </Grid>
         </form>
