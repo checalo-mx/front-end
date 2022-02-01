@@ -3,8 +3,8 @@ import React from "react";
 
 const PrimaryButton = (props) => {
   return (
-    <Button fullWidth type={props.type} color={props.color} variant="contained">
-      {props.children}
+    <Button fullWidth type={props.type} color={props.color} variant={props.variant}>
+      {props.buttonText}
     </Button>
   );
 };

@@ -18,10 +18,10 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password); //ELIMINAR
+  
     fetch("https://checalo-mx-api.herokuapp.com/login", {
       method: "POST",
-      body: JSON.stringify({ userName: email, password: password }), // data can be `string` or {object}!
+      body: JSON.stringify({ email, password }), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
       },
@@ -65,7 +65,7 @@ const Login = (props) => {
             </Grid>
             <Grid item xs={10}>
               <PrimaryButton
-                children="Iniciar sesión"
+                buttonText="Iniciar sesión"
                 color="secondary"
                 type="submit"
               />
