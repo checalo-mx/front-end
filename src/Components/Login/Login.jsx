@@ -20,7 +20,7 @@ const Login = (props) => {
   
     fetch("https://checalo-mx-api.herokuapp.com/login", {
       method: "POST",
-      body: JSON.stringify({ userName: email, password: password }), // data can be `string` or {object}!
+      body: JSON.stringify({ email, password }), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
       },
