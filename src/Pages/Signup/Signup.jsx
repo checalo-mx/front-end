@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import BackButton from '../Buttons/BackButton';
-import PrimaryButton from '../Buttons/Primary/PrimaryButton';
-import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
-import Dropdown from '../Dropdown/Dropdown';
-import InputForm from '../Inputs/InputForm';
-import CardTitle from '../Titles/CardTitle';
+import BackButton from '../../Components/Buttons/BackButton';
+import PrimaryButton from '../../Components/Buttons/Primary/PrimaryButton';
+import CheckboxGroup from '../../Components/CheckboxGroup/CheckboxGroup';
+import Dropdown from '../../Components/Dropdown/Dropdown';
+import InputForm from '../../Components/Inputs/InputForm';
+import CardTitle from '../../Components/Titles/CardTitle';
 
 const Signup = () => {
   const[allergies, setAllergies] =useState ([]);
