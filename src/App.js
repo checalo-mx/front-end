@@ -1,5 +1,5 @@
 import React from "react";
-import Signup from "./Components/Signup/Signup";
+// import Signup from "./Components/Signup/Signup";
 // import Background from './Components/Backgrounds/Background.jsx'
 // import BarcodeScannerComponent from "react-qr-barcode-scanner";
 // import Button from "@mui/material/Button";
