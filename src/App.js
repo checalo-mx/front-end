@@ -8,6 +8,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import UserSettings from "./Pages/UserSettings/UserSettings";
 
 function App() {
   const [data, setData] = React.useState("Not Found");
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/usersettings" element={<UserSettings/>}/>
       </Routes>
     </BrowserRouter>
   );
