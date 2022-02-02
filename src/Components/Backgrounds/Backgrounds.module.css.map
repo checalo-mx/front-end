@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,WAAW,CAAA;EAEP,aAAa,EAAE,iBAAiB;EAChC,gBAAgB,ECJJ,OAAO;EDKnB,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,KAAK;CAGpB",
+    "sources": [
+        "Backgrounds.module.scss",
+        "../../vars.scss"
+    ],
+    "names": [],
+    "file": "Backgrounds.module.css"
+}
