@@ -1,13 +1,13 @@
 import React from "react";
-import Background from "../Backgrounds/Background";
-import MainCard from "../Cards/MainCard";
-import InputForm from "../Inputs/InputForm";
+import Background from "../../Components/Backgrounds/Background";
+import MainCard from "../../Components/Cards/MainCard";
+import InputForm from "../../Components/Inputs/InputForm";
 import styles from "./Login.module.scss";
-import PrimaryButton from "../Buttons/Primary/PrimaryButton";
+import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { grid } from "@mui/system";
-import CardTitle from "../Titles/CardTitle";
+import CardTitle from "../../Components/Titles/CardTitle";
 import { useState } from "react";
 import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 import Link from '@mui/material/Link';
@@ -18,10 +18,10 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password); //ELIMINAR
+  
     fetch("https://checalo-mx-api.herokuapp.com/login", {
       method: "POST",
-      body: JSON.stringify({ userName: email, password: password }), // data can be `string` or {object}!
+      body: JSON.stringify({ email, password }), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
       },
@@ -65,9 +65,10 @@ const Login = (props) => {
             </Grid>
             <Grid item xs={10}>
               <PrimaryButton
-                children="Iniciar sesión"
+                buttonText="Iniciar sesión"
                 color="secondary"
                 type="submit"
+                variant="contained"
               />
             </Grid>
             <Grid item xs={10}>
