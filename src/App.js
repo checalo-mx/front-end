@@ -8,7 +8,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Landing from "./Pages/Landing/Landing";
+import UserSettings from "./Pages/UserSettings/UserSettings";
+import Home from "./Pages/Home/Home";
 
 function App() {
   const [data, setData] = React.useState("Not Found");
@@ -17,7 +18,9 @@ function App() {
       <Routes>
         <Route path="/landing" element={<Landing/>}/>
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />}/>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/usersettings" element={<UserSettings/>}/>
+        <Route path="/" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
   );
