@@ -1,20 +1,25 @@
 import React from "react";
-// import Background from './Components/Backgrounds/Background.jsx'
-// import BarcodeScannerComponent from "react-qr-barcode-scanner";
-// import Button from "@mui/material/Button";
-// import PrimaryButton from "./Components/Buttons/Primary/PrimaryButton";
-// import MainCard from "./Components/Cards/MainCard";
-import Login from "./Components/Login/Login.jsx";
-// import AlertMessage from "./Components/Alerts/AlertMessage.jsx";
-// import ImModal from "./Components/Modal/ImModal";
-// import Testing from "./Components/Testing/Testing.jsx";
+import Signup from "./Pages/Signup/Signup";
+import Login from "./Pages/Login/Login";
+import {
+  BrowserRouter,
+  Routes,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
+import UserSettings from "./Pages/UserSettings/UserSettings";
 
 function App() {
   const [data, setData] = React.useState("Not Found");
   return (
-    <>
-      <Login></Login>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/usersettings" element={<UserSettings/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
