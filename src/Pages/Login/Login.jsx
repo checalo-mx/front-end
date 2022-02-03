@@ -2,14 +2,10 @@ import React from "react";
 import Background from "../../Components/Backgrounds/Background";
 import MainCard from "../../Components/Cards/MainCard";
 import InputForm from "../../Components/Inputs/InputForm";
-import styles from "./Login.module.scss";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import { grid } from "@mui/system";
 import CardTitle from "../../Components/Titles/CardTitle";
 import { useState } from "react";
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 import Link from '@mui/material/Link';
 
 const Login = (props) => {
@@ -72,7 +68,7 @@ const Login = (props) => {
               />
             </Grid>
             <Grid item xs={10}>
-              <p>¿No tienes cuenta? <Link href="#" color="primary" underline="none">Registrate</Link></p>
+              <p>¿No tienes cuenta? <Link href="/signup" color="primary" underline="none">Registrate</Link></p>
             </Grid>
           </Grid>
         </form>
