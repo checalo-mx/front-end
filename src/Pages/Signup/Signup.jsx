@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BackButton from '../../Components/Buttons/BackButton';
 import PrimaryButton from '../../Components/Buttons/Primary/PrimaryButton';
 import CheckboxGroup from '../../Components/CheckboxGroup/CheckboxGroup';
@@ -18,6 +19,8 @@ const Signup = () => {
   const [diet, setDiet] = useState("");
   const [userAllergies, setUserAllergies] = useState({});
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate()
+
 
   const handleSubmit=(e) => { 
       e.preventDefault();
@@ -30,7 +33,12 @@ const Signup = () => {
       },
     })
       .then((res) => res.json())
-      .then((response) => console.log("Success:", response))
+      .then((response) => {
+        console.log("Success:", response)
+        if(response.ok){
+          navigate("/login")
+        }
+      })
       .catch((error) => console.error("Error:", error));
   };
 
