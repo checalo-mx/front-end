@@ -64,12 +64,17 @@ const Login = (props) => {
               />
             </Grid>
             <Grid item xs={10}>
-              <PrimaryButton
+              <Grid container xs={{ xs:2 }} justifyContent="center">
+                <Grid item>
+                <PrimaryButton
                 buttonText="Iniciar sesión"
                 color="secondary"
                 type="submit"
                 variant="contained"
               />
+                </Grid>
+              </Grid>
+             
             </Grid>
             <Grid item xs={10}>
               <p>¿No tienes cuenta? <Link href="#" color="primary" underline="none">Registrate</Link></p>
