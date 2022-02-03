@@ -1,13 +1,30 @@
-import { Container, Grid } from "@mui/material";
-import Box from "@mui/material/Box";
-import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
-import CardTitle from "../../Components/Titles/CardTitle";
 import Pagecontainer from "./Pagecontainer";
 import svg from "../Svg/landing1.svg"
 import svg2 from "../Svg/landing2.svg"
 import svg3 from "../Svg/landing3.svg"
+import { makeStyles } from "@mui/styles";
+import landingback from "../Svg/landingback.png"
+
+
+const useStyles = makeStyles({
+  greenContainer: {
+    backgroundColor: "#2DDA93",
+    color: "#FFF",
+  },
+  blueContainer: {
+    backgroundColor: "#2E3C48",
+    color: "#FFF",
+  },
+  firstContainer: {
+    backgroundImage: `url(${landingback})`,
+    color: "#FFF",
+  }
+})
 
 const Landing = () => {
+
+  const classes = useStyles()
+
   return (
     <>
       <Pagecontainer
@@ -17,6 +34,8 @@ const Landing = () => {
       buttonText="¡Comienza ahora!"
       buttonVariant="contained"
       svg={svg}
+      buttonLink="/login"
+      classes={classes.firstContainer}
       />
       <Pagecontainer
         titleText="¡Bienvenido a Checalo.mx!"
@@ -25,6 +44,7 @@ const Landing = () => {
         buttonColor="primary"
         buttonText="¡Comienza ahora!"
         buttonVariant="contained"
+        buttonLink="/login"
         svg={svg}
       />
       <Pagecontainer
@@ -37,9 +57,10 @@ const Landing = () => {
         buttonVariant="outlined"
         disabled
         svg={svg2}
+        classes={classes.greenContainer}
       />
       <Pagecontainer
-        titleText="¡Crea y comparte recetas!"
+        titleText="¡Crea y comparte!"
         containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción "
         buttonType="text"
         buttonColor="primary"
@@ -47,6 +68,7 @@ const Landing = () => {
         buttonVariant="outlined"
         disabled
         svg={svg3}
+        classes={classes.blueContainer}
       />
     </>
   );
