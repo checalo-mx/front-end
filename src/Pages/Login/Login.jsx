@@ -68,7 +68,7 @@ const Login = (props) => {
               />
             </Grid>
             <Grid item xs={10}>
-              <p>¿No tienes cuenta? <Link href="#" color="primary" underline="none">Registrate</Link></p>
+              <p>¿No tienes cuenta? <Link href="/signup" color="primary" underline="none">Registrate</Link></p>
             </Grid>
           </Grid>
         </form>
