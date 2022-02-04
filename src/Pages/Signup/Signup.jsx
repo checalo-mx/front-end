@@ -18,6 +18,7 @@ const Signup = () => {
     const [diet, setDiet] = useState("");
     const [userAllergies, setUserAllergies] = useState({});
     const [confirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +38,12 @@ const Signup = () => {
             },
         })
             .then((res) => res.json())
-            .then((response) => console.log("Success:", response))
+            .then((response) => {
+                console.log("Success:", response)
+                if(response.ok){
+                  navigate("/login")
+                }
+              })
             .catch((error) => console.error("Error:", error));
     };
 

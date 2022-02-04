@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "Login.module.scss",
+        "../../vars.scss"
+    ],
+    "names": [],
+    "file": "Login.module.css"
+}

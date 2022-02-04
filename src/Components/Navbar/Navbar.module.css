@@ -1,0 +1,11 @@
+.nav_container {
+  background-color: #2DDA93;
+  min-width: 22.5rem;
+  min-height: 5rem;
+  max-width: 100%;
+}
+
+.nav_container .nav_icon {
+  margin: 0 2rem;
+}
+/*# sourceMappingURL=Navbar.module.css.map */
