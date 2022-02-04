@@ -1,4 +1,4 @@
-import { Card, CardContent, Container, FormGroup, FormLabel, Grid, Switch, Typography } from "@mui/material";
+import { Button, Card, CardContent, Container, FormGroup, FormLabel, Grid, Switch, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -91,6 +91,9 @@ function FeedingUser () {
                             </FormGroup>
                         </CardContent>
                     </Card>
+                    <Box textAlign="center">
+                        <Button type="submit" color="secondary" variant="contained" sx={{ my: "2em"}} >Guardar</Button>
+                    </Box>
                 </Box>
             </Container>
         </>
