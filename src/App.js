@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import UserSettings from "./Pages/UserSettings/UserSettings";
 import Home from "./Pages/Home/Home";
+import FeedingUser from "./Pages/FeedingUser/FeedingUser";
 
 function App() {
   const [data, setData] = React.useState("Not Found");
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/usersettings" element={<UserSettings/>}/>
         <Route path="/" element={<Home/>}/>
+        <Route path="/feedinguser/:id" element={ <FeedingUser/> } />
       </Routes>
     </BrowserRouter>
   );
