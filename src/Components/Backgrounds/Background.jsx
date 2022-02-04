@@ -1,5 +1,4 @@
 import React from 'react'
-import { Grid,Paper } from '@mui/material'
 import styles from './Backgrounds.module.scss'
 
 const Background = () => {
