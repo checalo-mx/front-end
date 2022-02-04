@@ -5,7 +5,6 @@ import svg3 from "../Svg/landing3.svg"
 import { makeStyles } from "@mui/styles";
 import landingback from "../Svg/landingback.png"
 
-
 const useStyles = makeStyles({
   greenContainer: {
     backgroundColor: "#2DDA93",
