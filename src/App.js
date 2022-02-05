@@ -12,6 +12,7 @@ import FeedingUser from "./Pages/FeedingUser/FeedingUser";
 import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import Scanner from "./Pages/Scanner/Scanner";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/productView" element={<ProductView />} />
                 <Route path="/changePassword" element={<ChangePassword/>}/>
+                <Route path="/scanner" element={<Scanner/>}/>
             </Routes>
         </BrowserRouter>
     );
