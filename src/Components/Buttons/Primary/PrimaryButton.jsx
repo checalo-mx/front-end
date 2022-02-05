@@ -3,7 +3,7 @@ import React from "react";
 
 const PrimaryButton = (props) => {
   return (
-    <Button type={props.type} color={props.color} variant={props.variant} size={props.size}>
+    <Button type={props.type} color={props.color} startIcon={props.startIcon} variant={props.variant} size={props.size} className={props.classes}>
       {props.buttonText}
     </Button>
   );
