@@ -10,6 +10,7 @@ import UserSettings from "./Pages/UserSettings/UserSettings";
 import Home from "./Pages/Home/Home";
 import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/usersettings" element={<UserSettings />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/productView" element={<ProductView />} />
+                <Route path="/changePassword" element={<ChangePassword/>}/>
             </Routes>
         </BrowserRouter>
     );
