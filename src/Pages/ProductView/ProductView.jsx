@@ -1,7 +1,5 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import MainCard from "../../Components/Cards/MainCard";
-import CardTitle from "../../Components/Titles/CardTitle";
 import OutlinedCard from "../../Components/Cards/OutlinedCard";
 import Typography from "@mui/material/Typography";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
@@ -9,7 +7,7 @@ import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
 
-const useStyles= makeStyles({
+const useStyles = makeStyles({
     productViewButton: {
         width: "140px",
         height: "25px",
@@ -52,7 +50,6 @@ const ProductView = (props) => {
                                 variant="contained"
                                 startIcon={<QrCodeScannerOutlinedIcon />}
                                 classes={classes.productViewButton}
-
                             />
                         </Grid>
                         <Grid item>
