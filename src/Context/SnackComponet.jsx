@@ -1,34 +1,31 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {SnackbarContext} from "./ContextSnackBar"
 
-export const SnackContext = React.createContext(Snackcontext)
+const SnackComponet = (props) => {
 
-const Snackcontext = (props) => {
+    const {msg, setOpen, direction, open} = useContext(SnackbarContext)
+
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
 
-    const [open, setOpen] = useState(false);
 
     const [severity, setSeverity] = useState({
         severity: "sucess",
     });
 
-    const [direction, setDirection] = useState({
-        vertical: "false",
-        horizontal: "false",
-    });
+
 
     const { vertical, horizontal } = direction;
 
-    const handleClick = () => {
-        setOpen(true);
-        setDirection({ vertical: "top", horizontal: "center" });
-    };
+    // const handleClick = () => {
+    //     setOpen(true);
+    //     setDirection({ vertical: "top", horizontal: "center" });
+    // };
 
     const handleClose = (event, reason) => {
         if (reason === "clickaway") {
@@ -55,10 +52,10 @@ const Snackcontext = (props) => {
                 >
                     <Alert
                         onClose={handleClose}
-                        severity={props.severity}
+                        severity="success"
                         sx={{ width: "100%" }}
                     >
-                        {props.snackText}
+                        {msg}
                     </Alert>
                 </Snackbar>
             </Stack>
@@ -66,4 +63,4 @@ const Snackcontext = (props) => {
     );
 };
 
-export default Snackcontext;
+export default SnackComponet;
