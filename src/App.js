@@ -9,6 +9,8 @@ import {
 import UserSettings from "./Pages/UserSettings/UserSettings";
 import Home from "./Pages/Home/Home";
 import Landing from "./Pages/Landing/Landing";
+import Configuracionalimentacion from "./Pages/Configuracionalimentacion/Configuracionalimentacion"
+
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/usersettings" element={<UserSettings/>}/>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/configuracionalimentacion" element={<Configuracionalimentacion/>}/>
+        <Route path="/home" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
   );
