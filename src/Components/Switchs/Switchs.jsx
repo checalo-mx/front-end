@@ -3,13 +3,13 @@ import {Switch} from '@mui/material/Switch';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
-export default function BasicSwitches() {
+export default function Switchs() {
   return (
     <div>
-      <Switch {...label} defaultChecked />
-     
-      <Switch {...label} disabled defaultChecked />
+      <Switch {...label} defaultUnchecked />
+        
      
     </div>
   );
 }
+

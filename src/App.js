@@ -13,6 +13,7 @@ import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
+import Configuracionalimentacion from "./Pages/Configuracionalimentacion/Configuracionalimentacion";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/changePassword" element={<ChangePassword/>}/>
                 <Route path="/scanner" element={<Scanner/>}/>
                 <Route path="/home" element={<Home/>}/>
+                <Route path="/configuracionalimentacion" element={<Configuracionalimentacion/>}/>
             </Routes>
         </BrowserRouter>
     );

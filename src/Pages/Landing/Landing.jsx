@@ -4,6 +4,7 @@ import svg2 from "../Svg/landing2.svg"
 import svg3 from "../Svg/landing3.svg"
 import { makeStyles } from "@mui/styles";
 import landingback from "../Svg/landingback.png"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const useStyles = makeStyles({
