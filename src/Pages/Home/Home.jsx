@@ -1,67 +1,38 @@
-import React from 'react';
-import Background from '../../Components/Backgrounds/Background';
-import Grid from "@mui/material/Grid";
-import CardTitle from '../../Components/Titles/CardTitle';
-import PrimaryButton from '../../Components/Buttons/Primary/PrimaryButton'
-
-
+import React from "react";
+import HomeButtons from "../../Components/Buttons/Primary/HomeButtons";
+import Escanersvg from "../../Pages/Svg/scanlogo.svg";
+import Background from "../../Components/Backgrounds/Background";
+import Profilelogo from "../../Pages/Svg/profilelogo.svg"
+import Listlogo from "../../Pages/Svg/listlogo.svg"
+import Recipeslogo from "../../Pages/Svg/recipeslogo.svg"
 
 const Home = () => {
-  return <div>
-      <Background
-       />
-       <Grid container spacing ={{xs:2}} justifyContent="center">
-       <Grid item xs={10}>
-          <CardTitle
-            titleText="Hola"
-          />
-        </Grid>
-        <Grid item xs={10}>
-            ¡Comienza aquí!
-        </Grid>
-        <Grid item xs={10}>
-        <CardTitle
-            titleText="Elige una opción"
-          />
-        </Grid>
-        <Grid item xs={10}>
-        <PrimaryButton
-                buttonText="Mis Escaneos"
-                color="secondary"
-                type="submit"
-                variant="contained"
-              />
-        </Grid>
-        <Grid item xs={10}>
-        <PrimaryButton
-                buttonText="Mi Perfil"
-                color="secondary"
-                type="submit"
-                variant="contained"
-              />
-        </Grid>
-        <Grid item xs={10}>
-        <PrimaryButton
-                buttonText="Mis recetas"
-                color="secondary"
-                type="submit"
-                variant="contained"
-              />
-        </Grid>
-        <Grid item xs={10}>
-        <PrimaryButton
-                buttonText="Mis Listas"
-                color="secondary"
-                type="submit"
-                variant="contained"
-              />
-        </Grid>
-        <Grid item xs={10}></Grid>
-       </Grid>
-     
-  </div>;
+  return (
+    <div>
+      <Background />
+      <HomeButtons
+        svg={Escanersvg}
+        buttonTitle="Escaner"
+        buttonSubTitle="Aquí puedes escanear."
+      />
+      <HomeButtons
+        svg={Profilelogo}
+        buttonTitle="Mi Perfil"
+        buttonSubTitle="Cambia tus preferencias"
+      />
+      <HomeButtons
+        svg={Listlogo}
+        buttonTitle="Mis listas"
+        buttonSubTitle="Crea listas de productos"
+      />
+      <HomeButtons
+        svg={Recipeslogo}
+        buttonTitle="Recetas"
+        buttonSubTitle="Crea Recetas"
+      />
+
+    </div>
+  );
 };
 
 export default Home;
-
-
