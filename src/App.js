@@ -11,27 +11,6 @@ import Home from "./Pages/Home/Home";
 import FeedingUser from "./Pages/FeedingUser/FeedingUser";
 import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-import Configuracionalimentacion from "./Pages/Configuracionalimentacion/Configuracionalimentacion"
-
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/landing" element={<Landing/>}/>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/usersettings" element={<UserSettings/>}/>
-        <Route path="/configuracionalimentacion" element={<Configuracionalimentacion/>}/>
-        <Route path="/home" element={<Home/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
-=======
->>>>>>> feature/ConfiguracionAlimentacion
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
 
@@ -51,10 +30,6 @@ function App() {
             </Routes>
         </BrowserRouter>
     );
-<<<<<<< HEAD
-=======
->>>>>>> 81f03fe4bc329aef47fa683144a53e0dc407b9e5
->>>>>>> feature/ConfiguracionAlimentacion
 }
 
 export default App;
