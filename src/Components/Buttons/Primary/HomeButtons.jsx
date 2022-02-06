@@ -1,54 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const HomeButtons = (props) => {
-  return (
-    <div>
-      <Grid container spacing={{ xs: 2 }} justifyContent="center">
-        <Grid item xs={10}>
-          <Grid
-            container
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              border: "2px solid #2DDA93",
-              width: "300px",
-              height: "100px",
-              borderRadius: "10px",
-              boxShadow: "1px 5px 5px gray",
-            }}
-          >
-            <Grid item xs={10}>
-              <Grid container justifyContent="center">
-                <Grid item xs={10}>
-                  <img alt="escanerlogo" src={props.svg} />
-                </Grid>
-              </Grid>
-              <Grid item xs={10}>
-                <Grid container justifyContent="center">
-                  <Grid item xs={10}>
-                    <Typography variant="h6" gutterBottom component="div">
-                      Heading
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Typography
-                      variant="subtitle1"
-                      gutterBottom
-                      component="div"
+
+    const navigate = useNavigate();
+
+    const redirect = (address) => {
+        navigate(address);
+    };
+
+
+    return (
+        <>
+            <Grid container justifyContent="center">
+                <Grid item>
+                    <Grid
+                        container
+                        justifyContent="center"
+                        alignItems="center"
+                        onClick={()=>redirect(props.address)}
+                        sx={{
+                            width: "300px",
+                            height: "100px",
+                            border: "2px solid #2DDA93",
+                            borderRadius: "10px",
+                            boxShadow: "1px 5px 5px gray",
+                            marginTop: "15px",
+                            marginBottom: "15px",
+                        }}
                     >
-                      subtitle1.
-                    </Typography>
-                  </Grid>
+                        <Grid item xs={4}>
+                            <img alt="escanerlogo" src={props.svg} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography
+                                variant="h6"
+                                gutterBottom
+                                component="div"
+                            >
+                                {" "}
+                                {props.buttonTitle}
+                            </Typography>
+                            <Typography
+                                variant="subtitle2"
+                                gutterBottom
+                                component="div"
+                            >
+                                {props.buttonSubTitle}
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </Grid>
-              </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </div>
-  );
+        </>
+    );
 };
 
 export default HomeButtons;

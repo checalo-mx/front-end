@@ -6,6 +6,7 @@ import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined";
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
+import Background from "../../Components/Backgrounds/Background";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -18,6 +19,7 @@ const ProductView = (props) => {
     const classes = useStyles();
     return (
         <div>
+            <Background/>
             <Grid container spacing={{ xs: 2 }} justifyContent="center">
                 <Grid item>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
