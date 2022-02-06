@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Background from "../../Components/Backgrounds/Background";
 import BackButton from "../../Components/Buttons/BackButton";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import CheckboxGroup from "../../Components/CheckboxGroup/CheckboxGroup";
@@ -95,8 +96,8 @@ const Signup = () => {
 
     return (
         <div>
+            <Background/>
             <BackButton />
-
             <form onSubmit={handleSubmit}>
                 <Grid
                     container
