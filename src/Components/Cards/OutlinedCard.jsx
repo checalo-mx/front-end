@@ -14,7 +14,7 @@ const OutlinedCard = (props) => {
                     boxShadow: "1px 5px 5px gray",
                 }}
             >
-                <Card variant="outlined">{props.cardTags}</Card>
+                <Card variant="outlined">{props.cardTags ?  props.cardTags : props.children }</Card>
             </Box>
         </div>
     );
