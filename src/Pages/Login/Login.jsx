@@ -6,11 +6,13 @@ import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
 import CardTitle from "../../Components/Titles/CardTitle";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +25,12 @@ const Login = (props) => {
       },
     })
       .then((res) => res.json())
-      .then((response) => console.log("Success:", response))
+      .then((response) => {
+        console.log("Success:", response)
+        if(response.ok){
+          navigate("/home")
+        }
+      })
       .catch((error) => console.error("Error:", error));
   };
 
