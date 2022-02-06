@@ -11,6 +11,8 @@ import Home from "./Pages/Home/Home";
 import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import RecoverPassword from "./Pages/RecoverPassword/RecoverPassword";
+import RecoverPasswordSuccess from "./Pages/RecoverPassword/RecoverPasswordSuccess";
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/productView" element={<ProductView />} />
                 <Route path="/changePassword" element={<ChangePassword/>}/>
+                <Route path="/recoverpassword" element={<RecoverPassword/>}/>
+                <Route path="/recoverpasswordok" element={<RecoverPasswordSuccess/>}/>
             </Routes>
         </BrowserRouter>
     );
