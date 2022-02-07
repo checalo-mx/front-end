@@ -4,8 +4,6 @@ import svg2 from "../Svg/landing2.svg"
 import svg3 from "../Svg/landing3.svg"
 import { makeStyles } from "@mui/styles";
 import landingback from "../Svg/landingback.png"
-import DeleteIcon from '@mui/icons-material/Delete';
-
 
 const useStyles = makeStyles({
   greenContainer: {
@@ -24,11 +22,14 @@ const useStyles = makeStyles({
 
 const Landing = () => {
 
+  const {handleClick} = useContext(SnackbarContext)
+
   const classes = useStyles()
 
   return (
     <>
-      <Pagecontainer
+      <SnackComponent></SnackComponent>
+      <Pagecontainer  
       containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda... Mejor, Checalo ;)"
       buttonType="text"
       buttonColor="primary"
@@ -56,9 +57,11 @@ const Landing = () => {
         buttonColor="primary"
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
-        disabled
+        // disabled
+        onClick={handleClick}
         svg={svg2}
         classes={classes.greenContainer}
+
       />
       <Pagecontainer
         titleText="¡Crea y comparte!"
