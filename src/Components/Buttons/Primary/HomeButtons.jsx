@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { Pressable } from 'react-native';
 
 const HomeButtons = (props) => {
   return (
