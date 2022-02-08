@@ -18,7 +18,16 @@ const useStyles = makeStyles({
   },
   firstContainer: {
     backgroundImage: `url(${landingback})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+		backgroundSize: "cover",
+		backgroundAttachment: "fixed",
+		Height: "100%",
     color: "#FFF",
+  },
+  footerChecale: {
+    background: 'linear-gradient(to bottom, #2E3C48, #7879F1)',
+    color: "#FFF",  
   }
 })
 
@@ -52,24 +61,38 @@ const Landing = () => {
         titleText="Haz tus propias listas"
         containerText="Crea infinidad de listas con tus productos favoritos lleva a Checalo contigo al súper, haz tú lista de favoritos, lo que sea. 
 ¡Tú creatividad no tiene limites!"
-        buttonType="text"
-        buttonColor="primary"
+        buttonType="contained"
+        buttonColor="secondary"
+        bgcolor = "text.primary"
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
-        disabled
+        // disabled
         svg={svg2}
         classes={classes.greenContainer}
       />
       <Pagecontainer
         titleText="¡Crea y comparte!"
         containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción "
-        buttonType="text"
+        buttonType="contained"
         buttonColor="primary"
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
-        disabled
+        // disabled
         svg={svg3}
         classes={classes.blueContainer}
+      />
+      <Pagecontainer
+        titleTextFooter="Checalo.MX"
+        containerLink="Volver arriba"
+        containerText1="Mis listas"
+        containerText2="Mi Cuenta"
+        containerText3="Listas"
+        containerText4="Escaner"
+        containerText5="Crear cuenta"
+        containerText6="Busqueda manual"
+        containerText7="About us"
+        containerText8="Escaner"
+        classes={classes.footerChecale}
       />
     </>
   );
