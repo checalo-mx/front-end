@@ -5,11 +5,16 @@ import InputForm from "../../Components/Inputs/InputForm";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
 import CardTitle from "../../Components/Titles/CardTitle";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
+//
+import {SnackCtx} from "../../Context/Snackcontext"
 
 const Login = (props) => {
+
+  const {openSnackbar, closeSnackbar} = useContext(SnackCtx)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
@@ -28,10 +33,16 @@ const Login = (props) => {
       .then((response) => {
         console.log("Success:", response)
         if(response.ok){
+          openSnackbar("¡Bienvenido!", "success")
           navigate("/home")
+        }else{
+          openSnackbar("Usuario y/o contraseña incorrecto", "error")
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) =>{
+        openSnackbar("Algo salió mal, intenta nuevamente", "error")
+        console.error("Error:", error);
+      } )
   };
 
   const handleChangeEmail = (value) => {
@@ -47,8 +58,8 @@ const Login = (props) => {
       <Background />
       <MainCard>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={{ xs: 2 }} justifyContent="center">
-            <Grid item xc={10}>
+          <Grid container spacing={{ xs: 2 }} justifyContent="center" alignContent="center">
+            <Grid item xs={10}>
               <CardTitle titleText="¡Bienvenido!" />
             </Grid>
             <Grid item xs={10}>
@@ -67,7 +78,7 @@ const Login = (props) => {
               />
             </Grid>
             <Grid item xs={10}>
-              <Grid container xs={{ xs:2 }} justifyContent="center">
+              <Grid container spacing={{ xs:2 }} justifyContent="center">
                 <Grid item>
                 <PrimaryButton
                 buttonText="Iniciar sesión"
