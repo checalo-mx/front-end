@@ -22,13 +22,10 @@ const useStyles = makeStyles({
 
 const Landing = () => {
 
-  const {handleClick} = useContext(SnackbarContext)
-
   const classes = useStyles()
 
   return (
     <>
-      <SnackComponent></SnackComponent>
       <Pagecontainer  
       containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda... Mejor, Checalo ;)"
       buttonType="text"
@@ -58,7 +55,6 @@ const Landing = () => {
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
         // disabled
-        onClick={handleClick}
         svg={svg2}
         classes={classes.greenContainer}
 
