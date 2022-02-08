@@ -6,11 +6,13 @@ import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import Grid from "@mui/material/Grid";
 import CardTitle from "../../Components/Titles/CardTitle";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +25,12 @@ const Login = (props) => {
       },
     })
       .then((res) => res.json())
-      .then((response) => console.log("Success:", response))
+      .then((response) => {
+        console.log("Success:", response)
+        if(response.ok){
+          navigate("/home")
+        }
+      })
       .catch((error) => console.error("Error:", error));
   };
 
@@ -60,12 +67,17 @@ const Login = (props) => {
               />
             </Grid>
             <Grid item xs={10}>
-              <PrimaryButton
+              <Grid container xs={{ xs:2 }} justifyContent="center">
+                <Grid item>
+                <PrimaryButton
                 buttonText="Iniciar sesión"
                 color="secondary"
                 type="submit"
                 variant="contained"
               />
+                </Grid>
+              </Grid>
+             
             </Grid>
             <Grid item xs={10}>
               <p>¿No tienes cuenta? <Link href="/signup" color="primary" underline="none">Registrate</Link></p>
