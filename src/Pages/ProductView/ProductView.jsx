@@ -7,7 +7,7 @@ import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
 import Background from "../../Components/Backgrounds/Background";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 
 const useStyles = makeStyles({
@@ -82,6 +82,8 @@ const ProductView = (props) => {
                                 variant="contained"
                                 startIcon={<QrCodeScannerOutlinedIcon />}
                                 classes={classes.productViewButton}
+                                to="/scanner"
+                                component={Link}
                             />
                         </Grid>
                         <Grid item>
@@ -92,6 +94,8 @@ const ProductView = (props) => {
                                 variant="contained"
                                 startIcon={<HomeTwoToneIcon />}
                                 classes={classes.productViewButton}
+                                to="/home"
+                                component={Link}
                             />
                         </Grid>
                     </Grid>

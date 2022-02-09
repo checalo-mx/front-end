@@ -1,16 +1,15 @@
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { useState } from "react";
 import { Container, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function Scanner () {
-    const [barcode, setBarcode] = useState("No found");
+
+    const navigate = useNavigate()
 
     const handleScanner = ( err, result ) => {
         if ( result ) {
-            setBarcode(result.text);
-            alert(result.text);
-        } else {
-            setBarcode("No found");
+            navigate(`/productview/${result.text}`)
         }
     }
 
