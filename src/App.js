@@ -22,7 +22,7 @@ function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/feedinguser/:id" element={<FeedingUser />} />
                     <Route path="/usersettings" element={<UserSettings />} />
-                    <Route path="/productView" element={<ProductView />} />
+                    <Route path="/productview/:barcode" element={<ProductView />} />
                     <Route
                         path="/changePassword"
                         element={<ChangePassword />}
