@@ -30,6 +30,7 @@ const ProductView = (props) => {
                         name: data?.product?.product_name,
                         image: data?.product?.image_front_url,
                         qty: data?.product?.quantity,
+                        traces: data?.product?.traces_from_ingredients,
                     });
                     if (data.status === 0) {
                         openSnackbar(
@@ -43,6 +44,7 @@ const ProductView = (props) => {
                 openSnackbar("Algo salió mal, intenta nuevamente", "error");
             });
     }, []);
+    console.log(product)
 
     const classes = useStyles();
     return (
@@ -78,7 +80,6 @@ const ProductView = (props) => {
                             <PrimaryButton
                                 buttonText="Escanear"
                                 color="secondary"
-                                type="submit"
                                 variant="contained"
                                 startIcon={<QrCodeScannerOutlinedIcon />}
                                 classes={classes.productViewButton}
@@ -90,7 +91,6 @@ const ProductView = (props) => {
                             <PrimaryButton
                                 buttonText="Home"
                                 color="primary"
-                                type="submit"
                                 variant="contained"
                                 startIcon={<HomeTwoToneIcon />}
                                 classes={classes.productViewButton}
