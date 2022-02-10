@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 //
 import {SnackCtx} from "../../Context/Snackcontext"
+import {UserContext} from "../../Context/UserContext"
 
 const Login = (props) => {
 
@@ -18,6 +19,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+
+  const {setUser} = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +36,9 @@ const Login = (props) => {
       .then((response) => {
         console.log("Success:", response)
         if(response.ok){
+
+          setUser(response.payload)
+          
           openSnackbar("¡Bienvenido!", "success")
           navigate("/home")
         }else{
