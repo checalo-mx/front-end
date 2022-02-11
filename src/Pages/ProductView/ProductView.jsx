@@ -9,6 +9,7 @@ import { makeStyles } from "@mui/styles";
 import Background from "../../Components/Backgrounds/Background";
 import { useParams, Link } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
+import Thinking from "../Svg/thinking.svg";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -27,15 +28,26 @@ const ProductView = (props) => {
             .then((result) =>
                 result.json().then((data) => {
                     setProduct({
+                        title: "Escaneaste:",
+                        supportText: "Aquí conocerás más de este producto:",
                         name: data?.product?.product_name,
                         image: data?.product?.image_front_url,
                         qty: data?.product?.quantity,
+                        traces: data?.product?.traces_from_ingredients,
                     });
                     if (data.status === 0) {
                         openSnackbar(
                             "Producto no encontrado,  intenta con otro producto",
                             "warning"
                         );
+                        setProduct({
+                            title: "",
+                            supportText:
+                                "No pudimos encontrar tu producto :( intenta nuevamente",
+                            name: "Oops!",
+                            qty: "",
+                            image: Thinking,
+                        });
                     }
                 })
             )
@@ -43,6 +55,7 @@ const ProductView = (props) => {
                 openSnackbar("Algo salió mal, intenta nuevamente", "error");
             });
     }, []);
+    console.log(product);
 
     const classes = useStyles();
     return (
@@ -53,12 +66,12 @@ const ProductView = (props) => {
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item xs={10}>
                             <Typography align="center" variant="h4">
-                                Escaneaste: {product.name + product.qty}
+                                {product.title} {product.name + product.qty}
                             </Typography>
                         </Grid>
                         <Grid item xs={10}>
                             <Typography align="center">
-                                Aqui conoceras más de este produco:
+                                {product.supportText}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -67,7 +80,7 @@ const ProductView = (props) => {
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <OutlinedCard>
-                                <img alt="#" src={product.image}/>
+                                <img alt="#" src={product.image} />
                             </OutlinedCard>
                         </Grid>
                     </Grid>
@@ -78,7 +91,6 @@ const ProductView = (props) => {
                             <PrimaryButton
                                 buttonText="Escanear"
                                 color="secondary"
-                                type="submit"
                                 variant="contained"
                                 startIcon={<QrCodeScannerOutlinedIcon />}
                                 classes={classes.productViewButton}
@@ -90,7 +102,6 @@ const ProductView = (props) => {
                             <PrimaryButton
                                 buttonText="Home"
                                 color="primary"
-                                type="submit"
                                 variant="contained"
                                 startIcon={<HomeTwoToneIcon />}
                                 classes={classes.productViewButton}

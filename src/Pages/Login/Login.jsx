@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 //
 import {SnackCtx} from "../../Context/Snackcontext"
+import {UserContext} from "../../Context/UserContext"
 
 const Login = (props) => {
 
@@ -18,6 +19,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+
+  const {setUser} = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +36,9 @@ const Login = (props) => {
       .then((response) => {
         console.log("Success:", response)
         if(response.ok){
+
+          setUser(response.payload)
+          
           openSnackbar("¡Bienvenido!", "success")
           navigate("/home")
         }else{
@@ -59,7 +65,7 @@ const Login = (props) => {
       <MainCard>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={{ xs: 2 }} justifyContent="center">
-            <Grid item xs={10}>
+            <Grid item xs={10} style={{ display: "flex", justifyContent: 'center'}}>
               <CardTitle titleText="¡Bienvenido!" />
             </Grid>
             <Grid item xs={10}>
