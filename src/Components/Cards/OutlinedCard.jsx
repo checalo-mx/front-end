@@ -12,9 +12,12 @@ const OutlinedCard = (props) => {
                     width: "300px",
                     borderRadius: "30px",
                     boxShadow: "1px 5px 5px gray",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center"
                 }}
             >
-                <Card variant="outlined">{props.cardTags ?  props.cardTags : props.children }</Card>
+                <Card variant="outlined" sx={{border:0}}>{props.cardTags ?  props.cardTags : props.children }</Card>
             </Box>
         </div>
     );

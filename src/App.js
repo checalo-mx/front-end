@@ -12,6 +12,7 @@ import Scanner from "./Pages/Scanner/Scanner";
 //
 import { SnackProvider } from "./Context/Snackcontext";
 import UserProvider from "./Context/UserContext.jsx";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
     return (
@@ -40,6 +41,8 @@ function App() {
                         />
                         <Route path="/scanner" element={<Scanner />} />
                         <Route path="/home" element={<Home />} />
+                        <Route path="/nav" element={<Navbar />} />
+
                     </Routes>
                 </BrowserRouter>
             </SnackProvider>

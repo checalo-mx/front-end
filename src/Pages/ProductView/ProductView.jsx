@@ -42,7 +42,8 @@ const ProductView = (props) => {
                         );
                         setProduct({
                             title: "",
-                            supportText: "No pudimos encontrar tu producto :( intenta nuevamente",
+                            supportText:
+                                "No pudimos encontrar tu producto :( intenta nuevamente",
                             name: "Oops!",
                             qty: "",
                             image: Thinking,
