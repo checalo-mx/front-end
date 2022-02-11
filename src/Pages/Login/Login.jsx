@@ -65,7 +65,7 @@ const Login = (props) => {
       <MainCard>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={{ xs: 2 }} justifyContent="center">
-            <Grid item xs={10}>
+            <Grid item xs={10} style={{ display: "flex", justifyContent: 'center'}}>
               <CardTitle titleText="¡Bienvenido!" />
             </Grid>
             <Grid item xs={10}>
