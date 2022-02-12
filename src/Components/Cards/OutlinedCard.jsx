@@ -17,7 +17,7 @@ const OutlinedCard = (props) => {
                     justifyContent: "center"
                 }}
             >
-                <Card variant="outlined" sx={{border:0}}>{props.cardTags ?  props.cardTags : props.children }</Card>
+                <Card variant="outlined" sx={{border:0, textAlign: "center"}}>{props.cardTags ?  props.cardTags : props.children }</Card>
             </Box>
         </div>
     );

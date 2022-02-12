@@ -10,6 +10,11 @@ export default function UserProvider  ({ children })  {
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user));
     }, [user]);
+
+    // function getActiveUser (){
+    //     return activeUser = localStorage.getItem("user")
+    // }
+
     ///{user: }
     ////setUser({name: "usuario", token: "frewvgdfbhnjremgf", allergies:[{}])
     const data = { user, setUser };
