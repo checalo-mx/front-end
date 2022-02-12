@@ -74,7 +74,7 @@ const ProductView = (props) => {
                                 />
                                 <Typography align="center" component="p">
                                     Alergias con base en tu alimentación{" "}
-                                    {product.allergiesMatch.join(" ")}{" "}
+                                    {product.allergiesMatch ? product.allergiesMatch.join(" ") : ""}
                                 </Typography>
                             </OutlinedCard>
                         </Grid>
