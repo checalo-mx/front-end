@@ -10,6 +10,7 @@ import Background from "../../Components/Backgrounds/Background";
 import { useParams, Link } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
+import { UserContext } from "../../Context/UserContext";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -22,40 +23,24 @@ const ProductView = (props) => {
     const { barcode } = useParams();
     const [product, setProduct] = useState({});
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+        fetch(`https://checalo-mx-api.herokuapp.com/users/${barcode}`, {
+            headers: {
+                token: user.token,
+            },
+        })
             .then((result) =>
                 result.json().then((data) => {
-                    setProduct({
-                        title: "Escaneaste:",
-                        supportText: "Aquí conocerás más de este producto:",
-                        name: data?.product?.product_name,
-                        image: data?.product?.image_front_url,
-                        qty: data?.product?.quantity,
-                        traces: data?.product?.traces_from_ingredients,
-                    });
-                    if (data.status === 0) {
-                        openSnackbar(
-                            "Producto no encontrado,  intenta con otro producto",
-                            "warning"
-                        );
-                        setProduct({
-                            title: "",
-                            supportText:
-                                "No pudimos encontrar tu producto :( intenta nuevamente",
-                            name: "Oops!",
-                            qty: "",
-                            image: Thinking,
-                        });
-                    }
+                    setProduct(data.payload);
                 })
             )
             .catch((error) => {
                 openSnackbar("Algo salió mal, intenta nuevamente", "error");
             });
     }, []);
-    console.log(product);
+    console.log("Holis", product);
 
     const classes = useStyles();
     return (
@@ -66,7 +51,9 @@ const ProductView = (props) => {
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item xs={10}>
                             <Typography align="center" variant="h4">
-                                {product.title} {product.name + product.qty}
+                                {product.title +
+                                    (product.name || "") +
+                                    (product.qty || "")}
                             </Typography>
                         </Grid>
                         <Grid item xs={10}>
@@ -80,12 +67,20 @@ const ProductView = (props) => {
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <OutlinedCard>
-                                <img alt="#" src={product.image} />
+                                <img
+                                    alt="#"
+                                    src={product.image || Thinking}
+                                    height="240px"
+                                />
+                                <Typography align="center" component="p">
+                                    Alergias con base en tu alimentación{" "}
+                                    {product.allergiesMatch ? product.allergiesMatch.join(" ") : ""}
+                                </Typography>
                             </OutlinedCard>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3}>
+                <Grid item xs={10} marginTop={3} marginBottom={3}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
@@ -96,6 +91,8 @@ const ProductView = (props) => {
                                 classes={classes.productViewButton}
                                 to="/scanner"
                                 component={Link}
+                                variant="contained"
+                                style={{ width: 145, height: 40}}
                             />
                         </Grid>
                         <Grid item>
@@ -107,6 +104,8 @@ const ProductView = (props) => {
                                 classes={classes.productViewButton}
                                 to="/home"
                                 component={Link}
+                                variant="contained"
+                                style={{ width: 145, height: 40}}
                             />
                         </Grid>
                     </Grid>
