@@ -7,7 +7,12 @@ import LockIcon from "@mui/icons-material/Lock";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+import { ModalCtx } from "../../Context/ModalContext";
+import { useContext } from "react";
+
 const UserSettings = () => {
+    const { openModal, closeModal } = useContext(ModalCtx);
+
     return (
         <div>
             <Background />
@@ -26,7 +31,13 @@ const UserSettings = () => {
                 </Grid>
             </Grid>
 
-            <Grid container spacing={2} justifyContent="center" marginTop={7} marginBottom={7}>
+            <Grid
+                container
+                spacing={2}
+                justifyContent="center"
+                marginTop={7}
+                marginBottom={7}
+            >
                 <Grid item xs={10}>
                     <CardTitle titleText="Información de perfil" />
                 </Grid>
@@ -50,10 +61,24 @@ const UserSettings = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={10}>
-                    <Grid container justifyContent="space-between">
+                    <Grid
+                        container
+                        justifyContent="space-between"
+                        onClick={() =>
+                            openModal(
+                                "Estás a punto de eliminar tu cuenta",
+                                "Esto borrará tus listas de búsquedas dentro de chécalo.mx",
+                                "No te preocupes, siempre podrás volver.¡Te vamos a extrañar!",
+                                "error",
+                                "Aceptar",
+                                "secondary",
+                                "Cancelar"
+                            )
+                        }
+                    >
                         <Grid item>Eliminar cuenta</Grid>
                         <Grid item>
-                            <DeleteIcon/>
+                            <DeleteIcon />
                         </Grid>
                     </Grid>
                 </Grid>
