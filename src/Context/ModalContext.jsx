@@ -35,14 +35,17 @@ export default function MyModal(props) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <img src={errorSymbol}/>
+                <img src={errorSymbol} />
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     {props.modalTitle}
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 4, mb: 2 }}>
                     {props.modalText}
                 </Typography>
-                <Typography id="modal-modal-warm-Farewell" sx={{ mt: 2, mb: 8 }}>
+                <Typography
+                    id="modal-modal-warm-Farewell"
+                    sx={{ mt: 2, mb: 8 }}
+                >
                     {props.modalText2}
                 </Typography>
                 <Box
@@ -51,7 +54,11 @@ export default function MyModal(props) {
                         justifyContent: "space-between",
                     }}
                 >
-                    <Button variant="contained" color={props.okColor}>
+                    <Button
+                        variant="contained"
+                        color={props.okColor}
+                        onClick={props.handleConfirm}
+                    >
                         {props.okButtonText}
                     </Button>
                     <Button
@@ -71,8 +78,9 @@ export default function MyModal(props) {
 
 export const ModalCtx = React.createContext();
 export const ModalProvider = ({ children }) => {
-    const [open, setOpen] = React.useState(false);
-    const [modalSettings, setModalSettings] = React.useState({
+    const [confirm, setConfirm] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [modalSettings, setModalSettings] = useState({
         modalTitle: "Soy un titulo",
         modalText: "soy un texto",
         modalText2: "soy otro texto",
@@ -81,6 +89,10 @@ export const ModalProvider = ({ children }) => {
         cancelColor: "secondary",
         cancelButtonText: "cancel text",
     });
+
+    function handleConfirm() {
+        setConfirm(true);
+    }
 
     function openModal(
         modalTitle,
@@ -119,9 +131,10 @@ export const ModalProvider = ({ children }) => {
     }
 
     return (
-        <ModalCtx.Provider value={{ openModal, closeModal }}>
+        <ModalCtx.Provider value={{ openModal, closeModal, confirm }}>
             {children}
             <MyModal
+                handleConfirm= {handleConfirm}
                 open={open}
                 // modalSettings={modalSettings}
                 {...modalSettings}
