@@ -4,6 +4,7 @@ import svg2 from "../Svg/landing2.svg"
 import svg3 from "../Svg/landing3.svg"
 import { makeStyles } from "@mui/styles";
 import landingback from "../Svg/landingback.png"
+import { margin } from "@mui/system";
 
 const useStyles = makeStyles({
   greenContainer: {
@@ -44,6 +45,7 @@ const Landing = () => {
       svg={svg}
       buttonLink="/login"
       classes={classes.firstContainer}
+
       />
       <Pagecontainer
         titleText="¡Bienvenido a Checalo.mx!"
@@ -79,9 +81,10 @@ const Landing = () => {
         // disabled
         svg={svg3}
         classes={classes.blueContainer}
+
       />
       <Pagecontainer
-        titleTextFooter="Checalo.MX"
+        titleTextFooter="Checalo.mx"
         containerLink="Volver arriba"
         containerText1="Mis listas"
         containerText2="Mi Cuenta"
@@ -90,7 +93,7 @@ const Landing = () => {
         containerText5="Crear cuenta"
         containerText6="Busqueda manual"
         containerText7="About us"
-        containerText8="Escaner"
+        containerText8="Escaner :)"
         classes={classes.footerChecale}
       />
     </>
