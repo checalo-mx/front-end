@@ -61,10 +61,24 @@ const UserSettings = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={10}>
-                    <Grid container justifyContent="space-between" onClick={()=> openModal()}>
+                    <Grid
+                        container
+                        justifyContent="space-between"
+                        onClick={() =>
+                            openModal(
+                                "Estás a punto de eliminar tu cuenta",
+                                "Esto borrará tus listas de búsquedas dentro de chécalo.mx",
+                                "No te preocupes, siempre podrás volver.¡Te vamos a extrañar!",
+                                "error",
+                                "Aceptar",
+                                "secondary",
+                                "Cancelar"
+                            )
+                        }
+                    >
                         <Grid item>Eliminar cuenta</Grid>
                         <Grid item>
-                            <DeleteIcon/>
+                            <DeleteIcon />
                         </Grid>
                     </Grid>
                 </Grid>

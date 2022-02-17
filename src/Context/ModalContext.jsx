@@ -4,9 +4,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
+import { CloseFullscreenOutlined } from "@mui/icons-material";
+import errorSymbol from "../Pages/Svg/error.svg";
 
 const style = {
     position: "absolute",
+    textAlign: "center",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -14,13 +17,9 @@ const style = {
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
-    // display: "flex",
-    // // alignItems:"column",
-    // // alignContent: "center"
-  };
+};
 
 export default function MyModal(props) {
-
     const handleClose = (event, reason) => {
         if (reason === "clickaway") {
             return;
@@ -28,21 +27,23 @@ export default function MyModal(props) {
         props.onClose();
     };
 
-    const [open, setOpen] = React.useState(false);
-
     return (
         <Modal
-            open={open}
+            open={props.open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
+                <img src={errorSymbol}/>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     {props.modalTitle}
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <Typography id="modal-modal-description" sx={{ mt: 4, mb: 2 }}>
                     {props.modalText}
+                </Typography>
+                <Typography id="modal-modal-warm-Farewell" sx={{ mt: 2, mb: 8 }}>
+                    {props.modalText2}
                 </Typography>
                 <Box
                     sx={{
@@ -50,7 +51,7 @@ export default function MyModal(props) {
                         justifyContent: "space-between",
                     }}
                 >
-                    <Button variant="outlined" color={props.okColor}>
+                    <Button variant="contained" color={props.okColor}>
                         {props.okButtonText}
                     </Button>
                     <Button
@@ -74,6 +75,7 @@ export const ModalProvider = ({ children }) => {
     const [modalSettings, setModalSettings] = React.useState({
         modalTitle: "Soy un titulo",
         modalText: "soy un texto",
+        modalText2: "soy otro texto",
         okColor: "primary",
         okButtonText: "button text",
         cancelColor: "secondary",
@@ -83,6 +85,7 @@ export const ModalProvider = ({ children }) => {
     function openModal(
         modalTitle,
         modalText,
+        modalText2,
         okColor,
         okButtonText,
         cancelColor,
@@ -91,19 +94,22 @@ export const ModalProvider = ({ children }) => {
         setModalSettings({
             modalTitle,
             modalText,
+            modalText2,
             okColor,
             okButtonText,
             cancelColor,
             cancelButtonText,
         });
         setOpen(true);
-        console.log(modalSettings)
+        // console.log(modalSettings);
+        console.log(open);
     }
 
     function closeModal() {
         setModalSettings({
             modalTitle: "Soy un titulo",
             modalText: "soy un texto",
+            modalText2: "soy otro texto",
             okColor: "primary",
             okButtonText: "button text",
             cancelColor: "secondary",
@@ -117,7 +123,8 @@ export const ModalProvider = ({ children }) => {
             {children}
             <MyModal
                 open={open}
-                modalSettings={modalSettings}
+                // modalSettings={modalSettings}
+                {...modalSettings}
                 onClose={() => setOpen(false)}
             />
         </ModalCtx.Provider>
