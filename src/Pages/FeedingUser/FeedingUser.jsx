@@ -1,10 +1,21 @@
 import { Button, Card, CardContent, Container, FormGroup, FormLabel, Grid, Switch, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Background from "../../Components/Backgrounds/Background";
+import { UserContext } from "../../Context/UserContext";
 
 function FeedingUser () {
+
+    const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
+
     const { id } = useParams();
     const [user, setUser] = useState({
         name: "CESAR JAVIER",

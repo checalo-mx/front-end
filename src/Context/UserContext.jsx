@@ -8,7 +8,7 @@ export default function UserProvider  ({ children })  {
     };
     const [user, setUser] = useState(initialState);
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify({...user, logged:true}));
     }, [user]);
 
     // function getActiveUser (){

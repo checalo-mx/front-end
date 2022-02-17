@@ -81,7 +81,7 @@ const Landing = () => {
         classes={classes.blueContainer}
       />
       <Pagecontainer
-        titleTextFooter="Checalo.MX"
+        titleTextFooter="Checalo.mx"
         containerLink="Volver arriba"
         containerText1="Mis listas"
         containerText2="Mi Cuenta"
@@ -90,7 +90,7 @@ const Landing = () => {
         containerText5="Crear cuenta"
         containerText6="Busqueda manual"
         containerText7="About us"
-        containerText8="Escaner"
+        containerText8="Escaner :)"
         classes={classes.footerChecale}
       />
     </>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,10 +12,11 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
 //
 import { SnackProvider } from "./Context/Snackcontext";
-import UserProvider from "./Context/UserContext.jsx";
+import UserProvider, {UserContext} from "./Context/UserContext.jsx";
 import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
+
     return (
         <UserProvider>
             <SnackProvider>
