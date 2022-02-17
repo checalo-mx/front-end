@@ -40,7 +40,6 @@ const ProductView = (props) => {
                 openSnackbar("Algo salió mal, intenta nuevamente", "error");
             });
     }, []);
-    console.log("Holis", product);
 
     const classes = useStyles();
     return (
