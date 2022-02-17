@@ -6,15 +6,15 @@ import Background from "../../Components/Backgrounds/Background";
 import { UserContext } from "../../Context/UserContext";
 
 function FeedingUser () {
+    //ARREGLAR
+    // const { user, setUser } = useContext(UserContext);
+    // const navigate = useNavigate();
 
-    const { user, setUser } = useContext(UserContext);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (user.logged === false) {
-            navigate("/login");
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (user.logged === false) {
+    //         navigate("/login");
+    //     }
+    // }, []);
 
     const { id } = useParams();
     const [user, setUser] = useState({
