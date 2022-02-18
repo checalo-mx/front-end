@@ -50,7 +50,7 @@ const UserSettings = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={10}>
-                    <Grid container justifyContent="space-between">
+                    <Grid container justifyContent="space-between" >
                         <Grid item>Eliminar cuenta</Grid>
                         <Grid item>
                             <DeleteIcon/>
