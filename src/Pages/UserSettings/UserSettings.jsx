@@ -80,7 +80,7 @@ const UserSettings = () => {
                 <Grid item xs={10}>
                     <Grid container justifyContent="space-between">
                         <Grid item>Configuración de alimentación</Grid>
-                        <Grid item onClick={()=> navigate("/feedinguser/1")} >
+                        <Grid item onClick={()=> navigate("/feedinguser")} >
                             <SettingsIcon />
                         </Grid>
                     </Grid>
