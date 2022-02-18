@@ -48,13 +48,13 @@ const Pagecontainer = (props) => {
                         <Grid container justifyContent="center">
                             <a>{props.containerLink}</a>
                     </Grid>
-                    <Grid containerFooter justifyContent="space-between" marginTop={10}>
+                    <Grid justifyContent="space-between" marginTop={10}>
                             <p>{props.containerText1}</p>
                             <p>{props.containerText2}</p>
                             <p>{props.containerText3}</p>
                             <p>{props.containerText4}</p>
                     </Grid>
-                        <Grid containerFooter justifyContent="space-between">
+                        <Grid justifyContent="space-between">
                             <p>{props.containerText5}</p>
                             <p>{props.containerText6}</p>
                             <p>{props.containerText7}</p>

@@ -167,9 +167,9 @@ const Signup = () => {
                         />
                     </Grid>
                     <Grid item xs={10}>
-                        <Grid container xs={{ xs: 2 }} justifyContent="center">
+                        <Grid container spacing={ {xs:2 }} justifyContent="center">
                             <Grid item xs={10}>
-                              <Grid container xs={{ xs:2 }} justifyContent="center">
+                              <Grid container spacing={{ xs:2 }} justifyContent="center">
                                 <Grid item>
                                 <PrimaryButton
                                     buttonText="REGISTRATE"

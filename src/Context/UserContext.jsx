@@ -8,15 +8,9 @@ export default function UserProvider  ({ children })  {
     };
     const [user, setUser] = useState(initialState);
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify({...user, logged:true}));
+        localStorage.setItem("user", JSON.stringify({logged:true, ...user}));
     }, [user]);
 
-    // function getActiveUser (){
-    //     return activeUser = localStorage.getItem("user")
-    // }
-
-    ///{user: }
-    ////setUser({name: "usuario", token: "frewvgdfbhnjremgf", allergies:[{}])
     const data = { user, setUser };
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 };
