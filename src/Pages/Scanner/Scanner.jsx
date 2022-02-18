@@ -1,13 +1,22 @@
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Container, Grid, Typography, Checkbox, Button } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import { FlashOn, FlashOff, HomeTwoTone } from "@mui/icons-material";
 import Background from "../../Components/Backgrounds/Background"
+import { UserContext } from "../../Context/UserContext";
+
 
 function Scanner () {
     const [tourch, setTourch] = useState(false);
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+
+    useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
 
     const handleScanner = ( err, result ) => {
         if ( result ) {
