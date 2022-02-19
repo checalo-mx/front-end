@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 const Landing = () => {
   const classes = useStyles()
   return (
-           <>
+    <>
       {/* Este es el headContainer */}
       <Headercontainer
       titleText="¡Bienvenido a Checalo.mx!"

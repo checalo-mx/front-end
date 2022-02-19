@@ -11,11 +11,13 @@ import { UserContext } from "../../Context/UserContext";
 import { ModalCtx } from "../../Context/ModalContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 const UserSettings = () => {
     const { openModal, closeModal, confirm } = useContext(ModalCtx);
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
     useEffect(() => {
         if (confirm) {
             fetch(`https://checalo-mx-api.herokuapp.com/users/`, {
@@ -26,9 +28,9 @@ const UserSettings = () => {
             })
                 .then((result) =>
                     result.json().then((data) => {
-                        openSnackbar("Tu cuenta ha sido eliminada", "success");
-                        closeModal()
                         setUser({logged: false})
+                        // openSnackbar("Tu cuenta ha sido eliminada", "success");
+                        closeModal()
                         navigate("/");
                     })
                 )
@@ -36,7 +38,11 @@ const UserSettings = () => {
                     openSnackbar("Algo salió mal, intenta nuevamente", "error");
                 });
         }
+        
     }, [confirm]);
+
+    console.log("holis",user)
+
     return (
         <div>
             <Background />
@@ -66,7 +72,7 @@ const UserSettings = () => {
                 <Grid item xs={10}>
                     <Grid container justifyContent="space-between">
                         <Grid item>Cambiar contaseña</Grid>
-                        <Grid item>
+                        <Grid item onClick={()=> navigate("/changepassword")}>
                             <LockIcon>Lock</LockIcon>
                         </Grid>
                     </Grid>
@@ -74,15 +80,12 @@ const UserSettings = () => {
                 <Grid item xs={10}>
                     <Grid container justifyContent="space-between">
                         <Grid item>Configuración de alimentación</Grid>
-                        <Grid item>
+                        <Grid item onClick={()=> navigate("/feedinguser")} >
                             <SettingsIcon />
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid item xs={10}>
-
-                    <Grid container justifyContent="space-between" >
-                      
                     <Grid
                         container
                         justifyContent="space-between"
