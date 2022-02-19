@@ -11,6 +11,7 @@ import { useParams, Link } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
+import AlertMessage from "../../Components/Alerts/AlertMessage";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -71,10 +72,32 @@ const ProductView = (props) => {
                                     src={product.image || Thinking}
                                     height="240px"
                                 />
-                                <Typography align="center" component="p">
-                                    Alergias con base en tu alimentación{" "}
-                                    {product.allergiesMatch ? product.allergiesMatch.join(" ") : ""}
-                                </Typography>
+                                {product.allergiesMatch ? (
+                                    <AlertMessage
+                                        severity="error"
+                                        alertTitle="¡Cuidado!"
+                                        alertText={
+                                            `Este producto contiene alergenos ` +
+                                            product.allergiesMatch.join(", ")
+                                        }
+                                    />
+                                ) :  (
+                                    ""
+                                    // <AlertMessage severity="sucess" alertText="No encontramos ninguna alergia"/>
+                                )}
+                                {product.typeOfDietMatch ? (
+                                    <AlertMessage
+                                    alertTitle="¡Alerta!"
+                                        severity="warning"
+                                        alertText={
+                                            `Este producto podría contener ` +
+                                            product.allergiesMatch.join(", ")
+                                        }
+                                    />
+                                ) : (
+                                    ""
+                                    // <AlertMessage severity="sucess" alertText="No encontramos ninguna restricción con tu alimentación"/>
+                                )}
                             </OutlinedCard>
                         </Grid>
                     </Grid>
@@ -91,7 +114,7 @@ const ProductView = (props) => {
                                 to="/scanner"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40}}
+                                style={{ width: 145, height: 40 }}
                             />
                         </Grid>
                         <Grid item>
@@ -104,7 +127,7 @@ const ProductView = (props) => {
                                 to="/home"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40}}
+                                style={{ width: 145, height: 40 }}
                             />
                         </Grid>
                     </Grid>
