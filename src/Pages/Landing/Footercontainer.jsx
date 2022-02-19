@@ -3,14 +3,11 @@ import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Link from '@mui/material/Link';
 import {Link as StyledLink} from "react-router-dom";
-import { red } from '@mui/material/colors';
-
-const color = red[500];
 
 const Footercontainer = (props) => {
     return (
         <div>
-            <Grid container justifyContent="center" border={0}>
+            <Grid container justifyContent="center">
                 <Grid
                     container
                     justifyContent="center"
@@ -41,12 +38,6 @@ const Footercontainer = (props) => {
                             </Button>
                         </Grid>
                     </Grid>
-                    
-                    {/* <Grid item xs={10} marginTop={2} marginBottom={2}>
-                        <Grid container justifyContent="center">
-                            <a>{props.containerLinkFooter}</a>
-                        </Grid>
-                    </Grid> */}
 
                     <Grid item xs={10} paddingBottom={5} justifyContent="center" marginBottom={10}>
                         <Link component={StyledLink} to ="/home" underline="none" rel="noopener" color="inherit">{props.footerText1}</Link><br></br>

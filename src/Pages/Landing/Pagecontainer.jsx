@@ -27,7 +27,7 @@ const Pagecontainer = (props) => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={10}>
+                    <Grid item xs={10} marginTop={-3}>
                         <Grid container justifyContent="center">
                             <p>{props.containerText}</p>
                         </Grid>
@@ -45,7 +45,7 @@ const Pagecontainer = (props) => {
                         </Grid>
                     </Grid>
                     
-                    <Grid item xs={10} marginBottom={5}>
+                    <Grid item xs={10} marginBottom={7}>
                         <Grid container justifyContent="center">
                             <Button
                                 size={props.buttonSize}

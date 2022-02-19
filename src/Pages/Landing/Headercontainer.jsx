@@ -12,7 +12,7 @@ const Headercontainer = (props) => {
                     justifyContent="center"
                     className={props.classes}>
 
-                    <Grid item xs={10} marginBottom={5} marginTop={5}>
+                    <Grid item xs={10} marginBottom={5} marginTop={7}>
                         <Grid container justifyContent="center">
                             <Grid item>
                                 <Typography align="center" variant="h3">
@@ -24,17 +24,27 @@ const Headercontainer = (props) => {
 
                     <Grid item xs={10}>
                         <Grid container justifyContent="center">
-                            <p>{props.containerText}</p>
+                            <Grid item>
+                                <Typography align="left" fontWeight= "500" variant="h6">
+                                    {props.containerText}
+                                </Typography>
+                                <Typography align="center" fontWeight= "600" variant="h6" marginTop={3}>
+                                    {props.containerText2}
+                                </Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={10} marginTop={5}>
-                        <Grid container justifyContent="center">
-                            <a>{props.containerLink}</a>
-                        </Grid>
-                    </Grid>
-                    
-                    <Grid item xs={10} marginBottom={5}>
+                    {/* <Grid item xs={10} >
+                        <Typography align="center" fontWeight= "500" variant="h6">
+                            {props.containerText}
+                        </Typography>
+                        <Typography align="center" fontWeight= "600" variant="h6" marginTop={3}>
+                            {props.containerText2}
+                        </Typography>
+                    </Grid> */}
+
+                    <Grid item xs={10} marginBottom={7} marginTop={1}>
                         <Grid container justifyContent="center">
                             <Button
                                 size={props.buttonSize}

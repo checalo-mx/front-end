@@ -15,17 +15,18 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const useStyles = makeStyles({
   headContainer: {
-    background: 'linear-gradient(to bottom, #Fff 25%, #efefef 65%)',
+    backgroundImage: `linear-gradient(45deg, #bcc8dc99 0%, #8d8f9199 65%), url(${landingback})`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
+    backgroundPosition: "relative",
 		backgroundSize: "cover",
-		// backgroundAttachment: "fixed",
 		Height: "100%",
     color: "#000",
+    fontSize:"1.25rem"
   },
   loginContainer: {
     background: 'linear-gradient(to bottom, #efefef 30%, #eee 90%)',
-    color: "#000"
+    color: "#000",
+    marginTop: "-.5rem"
   },
   listContainer: {
     background: 'linear-gradient(to bottom, #eee 10%,  #2DDA93 100%)',
@@ -48,7 +49,8 @@ const Landing = () => {
       {/* Este es el headContainer */}
       <Headercontainer
       titleText="¡Bienvenido a Checalo.mx!"
-      containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda... Mejor, Checalo ;)"
+      containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda..." 
+      containerText2="¡Mejor Checalo!"
       buttonType="text"
       buttonSize="large"
       buttonColor="primary"
@@ -86,7 +88,7 @@ const Landing = () => {
       {/* Este es el recipesContainer */}
       <Pagecontainer
         titleText="¡Crea y comparte!"
-        containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción "
+        containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción."
         buttonType="contained"
         buttonColor="secondary"
         buttonText="¡Proximamente!"
@@ -99,12 +101,13 @@ const Landing = () => {
       {/* Este es el footerContainer */}
       <Footercontainer
         titleTextFooter="Checalo.MX"
+
         buttonType="contained"
-        buttonColor="secondary"
+        buttonColor="inherit"
         buttonText="Ir al inicio"
         buttonVariant="text"
-        buttonType="disabled"
         endIcon={<ArrowUpwardIcon />}
+
         footerText1="Mi cuenta"
         footerText2="Escáner"
         footerText3="Iniciar sesión"
