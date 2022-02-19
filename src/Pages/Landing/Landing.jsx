@@ -11,8 +11,6 @@ import UpdateIcon from '@mui/icons-material/Update';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 
-
-
 const useStyles = makeStyles({
   headContainer: {
     backgroundImage: `linear-gradient(45deg, #bcc8dc99 0%, #8d8f9199 65%), url(${landingback})`,
@@ -45,7 +43,7 @@ const useStyles = makeStyles({
 const Landing = () => {
   const classes = useStyles()
   return (
-    <>
+        <>
       {/* Este es el headContainer */}
       <Headercontainer
       titleText="¡Bienvenido a Checalo.mx!"
