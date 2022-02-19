@@ -1,119 +1,97 @@
-import Headercontainer from "./Headercontainer";
 import Pagecontainer from "./Pagecontainer";
-import Footercontainer from "./Footercontainer";
-import svg from "../Svg/landing1.svg";
-import svg2 from "../Svg/landing2.svg";
-import svg3 from "../Svg/landing3.svg";
+import svg from "../Svg/landing1.svg"
+import svg2 from "../Svg/landing2.svg"
+import svg3 from "../Svg/landing3.svg"
 import { makeStyles } from "@mui/styles";
-import landingback from "../Svg/landingback.png";
-import LoginIcon from '@mui/icons-material/Login';
-import UpdateIcon from '@mui/icons-material/Update';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-
+import landingback from "../Svg/landingback.png"
 
 const useStyles = makeStyles({
-  headContainer: {
-    backgroundImage: `linear-gradient(45deg, #bcc8dc99 0%, #8d8f9199 65%), url(${landingback})`,
+  greenContainer: {
+    backgroundColor: "#2DDA93",
+    color: "#FFF",
+  },
+  blueContainer: {
+    backgroundColor: "#2E3C48",
+    color: "#FFF",
+  },
+  firstContainer: {
+    backgroundImage: `url(${landingback})`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "relative",
+    backgroundPosition: "center center",
 		backgroundSize: "cover",
+		backgroundAttachment: "fixed",
 		Height: "100%",
-    color: "#000",
-    fontSize:"1.25rem"
-  },
-  loginContainer: {
-    background: 'linear-gradient(to bottom, #efefef 30%, #eee 90%)',
-    color: "#000",
-    marginTop: "-.5rem"
-  },
-  listContainer: {
-    background: 'linear-gradient(to bottom, #eee 10%,  #2DDA93 100%)',
-    color: "#000",
-  },
-  recipesContainer: {
-    background: 'linear-gradient(to top, #2E3C48 38%,  #2DDA93 100%)',
     color: "#FFF",
   },
-  footerChecalo: {
+  footerChecale: {
     background: 'linear-gradient(to bottom, #2E3C48, #7879F1)',
-    color: "#FFF",
+    color: "#FFF",  
   }
 })
 
 const Landing = () => {
+
   const classes = useStyles()
+
   return (
-        <>
-      {/* Este es el headContainer */}
-      <Headercontainer
-      titleText="¡Bienvenido a Checalo.mx!"
-      containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda..." 
-      containerText2="¡Mejor Checalo!"
+    <>
+      <Pagecontainer  
+      containerText="Te ayudamos a resolver la incognita de si un producto va contigo o no. No te quedes con la duda... Mejor, Checalo ;)"
       buttonType="text"
-      buttonSize="large"
       buttonColor="primary"
       buttonText="¡Comienza ahora!"
       buttonVariant="contained"
-      buttonLink="/signup"
-      classes={classes.headContainer}/>
-      
-      {/* Este es el loginContainer */}
+      svg={svg}
+      buttonLink="/login"
+      classes={classes.firstContainer}
+      />
       <Pagecontainer
+        titleText="¡Bienvenido a Checalo.mx!"
         containerText="En Checalo comprendemos lo díficil que es encontrar productos que sean compatibles con tú tipo de alimentación y estilo de vida. Es por eso que Checalo nace como la herramienta diseñada especialmente para tí, para ayudarte a encontrar tus productos favoritos."
         buttonType="text"
         buttonColor="primary"
-        buttonText="Inicia sesión"
+        buttonText="¡Comienza ahora!"
         buttonVariant="contained"
         buttonLink="/login"
-        endIcon
-        endIcon={<LoginIcon />}
         svg={svg}
-        classes={classes.loginContainer}/>
-
-      {/* Este es el listContainer */}
+      />
       <Pagecontainer
         titleText="Haz tus propias listas"
-        containerText="Crea infinidad de listas con tus productos favoritos lleva a Checalo contigo al súper, haz tú lista de favoritos, lo que sea. ¡Tú creatividad no tiene limites!"
+        containerText="Crea infinidad de listas con tus productos favoritos lleva a Checalo contigo al súper, haz tú lista de favoritos, lo que sea. 
+¡Tú creatividad no tiene limites!"
+        buttonType="contained"
         buttonColor="secondary"
         bgcolor = "text.primary"
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
-        buttonType="disabled"
-        endIcon={<UpdateIcon />}
+        // disabled
         svg={svg2}
-        classes={classes.listContainer}/>
+        classes={classes.greenContainer}
 
-      {/* Este es el recipesContainer */}
+      />
       <Pagecontainer
         titleText="¡Crea y comparte!"
-        containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción."
+        containerText="En checalo puedes crear tus propias recetas usando tus productos favoritos, además de poder consultar otras recetas que hagan vayan contigo y tú tipo de alimentción "
         buttonType="contained"
-        buttonColor="secondary"
+        buttonColor="primary"
         buttonText="¡Proximamente!"
         buttonVariant="outlined"
-        buttonType="disabled"
-        endIcon={<UpdateIcon />}
+        // disabled
         svg={svg3}
-        classes={classes.recipesContainer}/>
-
-      {/* Este es el footerContainer */}
-      <Footercontainer
+        classes={classes.blueContainer}
+      />
+      <Pagecontainer
         titleTextFooter="Checalo.MX"
-
-        buttonType="contained"
-        buttonColor="inherit"
-        buttonText="Ir al inicio"
-        buttonVariant="text"
-        endIcon={<ArrowUpwardIcon />}
-
-        footerText1="Mi cuenta"
-        footerText2="Escáner"
-        footerText3="Iniciar sesión"
-        footerText4="Crear Cuenta"
-        footerText5="About us"
-        footerText6="Recetas"
-        footerText7="Mis listas"
-        classes={classes.footerChecalo}
+        containerLink="Volver arriba"
+        containerText1="Mis listas"
+        containerText2="Mi Cuenta"
+        containerText3="Listas"
+        containerText4="Escaner"
+        containerText5="Crear cuenta"
+        containerText6="Busqueda manual"
+        containerText7="About us"
+        containerText8="Escaner"
+        classes={classes.footerChecale}
       />
     </>
   );
