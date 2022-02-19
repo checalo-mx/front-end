@@ -40,7 +40,6 @@ const ProductView = (props) => {
                 openSnackbar("Algo salió mal, intenta nuevamente", "error");
             });
     }, []);
-    console.log("Holis", product);
 
     const classes = useStyles();
     return (
@@ -80,7 +79,7 @@ const ProductView = (props) => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3}>
+                <Grid item xs={10} marginTop={3} marginBottom={3}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
@@ -91,6 +90,8 @@ const ProductView = (props) => {
                                 classes={classes.productViewButton}
                                 to="/scanner"
                                 component={Link}
+                                variant="contained"
+                                style={{ width: 145, height: 40}}
                             />
                         </Grid>
                         <Grid item>
@@ -102,6 +103,8 @@ const ProductView = (props) => {
                                 classes={classes.productViewButton}
                                 to="/home"
                                 component={Link}
+                                variant="contained"
+                                style={{ width: 145, height: 40}}
                             />
                         </Grid>
                     </Grid>

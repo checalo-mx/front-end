@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Grid, Typography, Checkbox, Button } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import { FlashOn, FlashOff, HomeTwoTone } from "@mui/icons-material";
+import Background from "../../Components/Backgrounds/Background"
 
 function Scanner () {
     const [tourch, setTourch] = useState(false);
@@ -19,8 +20,11 @@ function Scanner () {
     }
 
     return (
+        
         <Container>
+            <Background/>
             <Grid container justifyContent="center" rowSpacing={3}>
+               
                 <Grid item xs={9}>
                     <Typography component="h1" variant="h5">
                         Escanea el código de barras de tu producto.
