@@ -1,20 +1,22 @@
 import { Grid } from "@mui/material";
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import Background from "../../Components/Backgrounds/Background";
 import InputForm from "../../Components/Inputs/InputForm";
 import CardTitle from "../../Components/Titles/CardTitle";
 import LockIcon from "@mui/icons-material/Lock";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { HomeTwoTone, Edit, Cancel, Save } from "@mui/icons-material";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { UserContext } from "../../Context/UserContext";
 import { ModalCtx } from "../../Context/ModalContext";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 
 const UserSettings = () => {
     const { openModal, closeModal, confirm } = useContext(ModalCtx);
-    const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
+    const { openSnackbar } = useContext(SnackCtx);
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ const UserSettings = () => {
                 .then((result) =>
                     result.json().then((data) => {
                         setUser({logged: false})
-                        // openSnackbar("Tu cuenta ha sido eliminada", "success");
+                        openSnackbar("Tu cuenta ha sido eliminada", "success");
                         closeModal()
                         navigate("/");
                     })
@@ -41,20 +43,92 @@ const UserSettings = () => {
         
     }, [confirm]);
 
-    console.log("holis",user)
+    const [userInfo, setUserInfo] = useState({});
+    const [edit, setEdit] = useState(true);
+
+    useEffect(() => {
+        fetch("https://checalo-mx-api.herokuapp.com/users/info", {
+            headers: {
+                token: user.token,
+            }
+        })
+        .then( result => result.json() )
+        .then( data => setUserInfo(data.payload) )
+        .catch(err => openSnackbar("¡Opps! Tenemos problemas, intenta más tarde", "error"))
+    }, []);
+
+    const handleEdit = () => setEdit(!edit);
+
+    const handleName = (value) => setUserInfo({...userInfo, name: value});
+    const handleLastName = (value) => setUserInfo({...userInfo, lastName: value});
+    const handleEmail= (value) => setUserInfo({...userInfo, email: value});
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch("https://checalo-mx-api.herokuapp.com/users", {
+            method: "PATCH",
+            body: JSON.stringify(userInfo),
+            headers: {
+                "token": user.token,
+                "Content-Type": "application/json",
+            },
+        })
+        .then(result => result.json())
+        .then(data => {
+            if (data.ok){
+                openSnackbar("Tu información de perfil ha sido actualizada.", "success");
+                handleEdit();
+            } else {
+                openSnackbar("No pudimos actualizar tu información, intenta más tarce", "error");
+            }
+        })
+        .catch(err => openSnackbar("¡Opps! Tenemos problemas, intenta más tarde", "error") );
+    }
+
+    const HomeLink = {
+        buttonText: "Home",
+        startIcon: <HomeTwoTone />,
+        component: Link, 
+        to:"/Home",
+    }
+    const SaveButton = {
+        buttonText: "Guardar",
+        startIcon: <Save />,
+        onClick: handleSubmit,
+    }
+
+    console.log("holis",user);
 
     return (
         <div>
             <Background />
-            <Grid container spacing={{ xs: 2 }} justifyContent="center">
+            <Grid container rowSpacing={{ xs: 4 }} justifyContent="center" sx={{marginTop: "0!important"}}>
                 <Grid item xs={10}>
-                    <InputForm label="Nombre" />
+                    <InputForm variant="standard" onChangeValue={handleName} disabled={edit} label="Nombre" value={userInfo.name || ""} />
                 </Grid>
                 <Grid item xs={10}>
-                    <InputForm label="Apellido" />
+                    <InputForm variant="standard" onChangeValue={handleLastName} disabled={edit} label="Apellido" value={userInfo.lastName || ""} />
                 </Grid>
                 <Grid item xs={10}>
-                    <InputForm label="Correo Electrónico" />
+                    <InputForm variant="standard" onChangeValue={handleEmail} disabled={edit} label="Correo Electrónico" value={userInfo.email || ""} />
+                </Grid>
+                <Grid item xs={10} container columnSpacing={2}>
+                    <Grid item xs={6} >
+                        <PrimaryButton fullWidth
+                            buttonText={edit ? "Editar" : "Cancelar"} 
+                            onClick={handleEdit} 
+                            variant="contained"
+                            startIcon={edit ? <Edit /> : <Cancel />}
+                            color={edit ? "warning" : "primary"}
+                        />
+                    </Grid>
+                    <Grid item xs={6} >
+                        <PrimaryButton fullWidth 
+                            { ... edit ? HomeLink : SaveButton }
+                            variant="outlined" 
+                            sx={{height:"100%", "& .MuiSvgIcon-root": {fontSize: "24px"}}} 
+                        />
+                    </Grid>
                 </Grid>
             </Grid>
             <Grid
