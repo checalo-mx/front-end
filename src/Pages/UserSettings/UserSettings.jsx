@@ -21,6 +21,13 @@ const UserSettings = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
+    
+    useEffect(() => {
+
         if (confirm) {
             fetch(`https://checalo-mx-api.herokuapp.com/users/`, {
                 method: "DELETE",

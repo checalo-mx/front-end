@@ -7,11 +7,12 @@ import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
 import Background from "../../Components/Backgrounds/Background";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link , useNavigate } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
 import AlertMessage from "../../Components/Alerts/AlertMessage";
+
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -24,9 +25,17 @@ const ProductView = (props) => {
     const { barcode } = useParams();
     const [product, setProduct] = useState({});
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
-    const { user } = useContext(UserContext);
+    const { user , setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
+
+    useEffect(() => {
+        
         fetch(`https://checalo-mx-api.herokuapp.com/users/${barcode}`, {
             headers: {
                 token: user.token,

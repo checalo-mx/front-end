@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Grid from "@mui/material/Grid";
 import InputForm from "../../Components/Inputs/InputForm";
 import BackButton from "../../Components/Buttons/BackButton";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Context/UserContext";
+
 
 function RecoverPassword () {
+    const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
+    
     const [email, setEmail] = useState("");
 
     const handleEmail = (value) => {
