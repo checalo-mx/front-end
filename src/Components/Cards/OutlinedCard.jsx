@@ -8,7 +8,7 @@ const OutlinedCard = (props) => {
             <Box
                 sx={{
                     bgcolor: "#FFFF",
-                    height: "380px",
+                    height: "auto",
                     width: "300px",
                     borderRadius: "30px",
                     boxShadow: "1px 5px 5px gray",
