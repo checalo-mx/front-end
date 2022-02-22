@@ -149,7 +149,7 @@ const UserSettings = () => {
                     <CardTitle titleText="Información de perfil" />
                 </Grid>
             </Grid>
-            <Grid container justifyContent="center" rowSpacing={4}>
+            <Grid container justifyContent="center" rowSpacing={4} marginBottom={5}>
                 <Grid item xs={10}>
                     <Grid container justifyContent="space-between">
                         <Grid item>Cambiar contaseña</Grid>
