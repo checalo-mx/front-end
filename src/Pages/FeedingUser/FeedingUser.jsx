@@ -96,8 +96,8 @@ function FeedingUser () {
                             </FormGroup>
                         </CardContent>
                     </Card>
-                    <Box textAlign="center">
-                        <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained" sx={{ my: "2em"}} >Guardar</Button>
+                    <Box textAlign="center" marginBottom={5} marginTop={4}>
+                        <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained">Guardar</Button>
                     </Box>
                 </Box>
             </Container>
