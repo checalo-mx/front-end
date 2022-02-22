@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export default function UserProvider  ({ children })  {
+
     const initialState = JSON.parse(localStorage.getItem("user")) || {
         logged: false,
     };
@@ -10,6 +11,10 @@ export default function UserProvider  ({ children })  {
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify({logged:true, ...user}));
     }, [user]);
+
+    if(!user.token && user.logged){
+        setUser({logged:false})
+    }
 
     const data = { user, setUser };
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

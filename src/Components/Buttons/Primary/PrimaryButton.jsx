@@ -8,6 +8,7 @@ const PrimaryButton = (props) => {
       {buttonText}
     </Button>
   );
+  
 };
 
 export default PrimaryButton;

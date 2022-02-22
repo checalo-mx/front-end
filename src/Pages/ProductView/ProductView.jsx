@@ -7,10 +7,11 @@ import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
 import Background from "../../Components/Backgrounds/Background";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
+import AlertMessage from "../../Components/Alerts/AlertMessage";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -23,7 +24,14 @@ const ProductView = (props) => {
     const { barcode } = useParams();
     const [product, setProduct] = useState({});
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.logged === false) {
+            navigate("/login");
+        }
+    }, []);
 
     useEffect(() => {
         fetch(`https://checalo-mx-api.herokuapp.com/users/${barcode}`, {
@@ -71,12 +79,16 @@ const ProductView = (props) => {
                                     src={product.image || Thinking}
                                     height="240px"
                                 />
-                                <Typography align="center" component="p">
-                                    Alergias con base en tu alimentación{" "}
-                                    {product.allergiesMatch
-                                        ? product.allergiesMatch.join(" ")
-                                        : ""}
-                                </Typography>
+                                <AlertMessage
+                                    severity={product?.allergiesAlert?.severity || ""}
+                                    alertTitle={product?.allergiesAlert?.alertTitle || ""}
+                                    alertText={product?.allergiesAlert?.alertText || ""}
+                                />
+                                <AlertMessage
+                                    severity={product?.dietAlert?.severity || ""}
+                                    alertTitle={product?.dietAlert?.alertTitle || ""}
+                                    alertText={product?.dietAlert?.alertText || ""}
+                                />
                             </OutlinedCard>
                         </Grid>
                     </Grid>
@@ -93,7 +105,7 @@ const ProductView = (props) => {
                                 to="/scanner"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 140, height: 40 }}
+                                style={{ width: 145, height: 40 }}
                             />
                         </Grid>
                         <Grid item>
@@ -106,7 +118,7 @@ const ProductView = (props) => {
                                 to="/home"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 140, height: 40 }}
+                                style={{ width: 145, height: 40 }}
                             />
                         </Grid>
                     </Grid>

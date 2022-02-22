@@ -15,8 +15,10 @@ import { useNavigate } from "react-router-dom";
 import Background from "../../Components/Backgrounds/Background";
 import { UserContext } from "../../Context/UserContext";
 import { SnackCtx } from "../../Context/Snackcontext";
+import { handleUserTypeOfDiet, handleUserAllergies, handleSubmit, getUserInfo } from "./functions";
 
-function FeedingUser() {
+function FeedingUser () {
+    const [userInfo, setUserInfo] = useState({allergies: [{}]});
     const { openSnackbar } = useContext(SnackCtx);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
@@ -27,73 +29,9 @@ function FeedingUser() {
         }
     }, []);
 
-    const [userInfo, setUserInfo] = useState({ allergies: [{}] });
-
     useEffect(() => {
-        fetch("https://checalo-mx-api.herokuapp.com/users/info", {
-            headers: {
-                token: user.token,
-            },
-        })
-            .then((result) => result.json())
-            .then((data) => setUserInfo(data.payload))
-            .catch((err) =>
-                openSnackbar(
-                    "¡Opps! Tenemos problemas, intenta más tarde",
-                    "error"
-                )
-            );
-    }, []);
-
-    console.log(userInfo);
-
-    const handleUserTypeOfDiet = (e) => {
-        if (e.target.name !== userInfo.typeOfDiet) {
-            setUserInfo({ ...userInfo, typeOfDiet: e.target.name });
-        }
-    };
-
-    const handleUserAllergies = (e) => {
-        setUserInfo({
-            ...userInfo,
-            allergies: [
-                { ...userInfo.allergies[0], [e.target.name]: e.target.checked },
-            ],
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch("https://checalo-mx-api.herokuapp.com/users", {
-            method: "PATCH",
-            body: JSON.stringify(userInfo),
-            headers: {
-                token: user.token,
-                "Content-Type": "application/json",
-            },
-        })
-            .then((result) => result.json())
-            .then((data) => {
-                if (data.ok) {
-                    openSnackbar(
-                        "Tu información de alimentación ha sido actualizada.",
-                        "success"
-                    );
-                    navigate("/home");
-                } else {
-                    openSnackbar(
-                        "No pudimos actualizar tu información, intenta más tarce",
-                        "error"
-                    );
-                }
-            })
-            .catch((err) =>
-                openSnackbar(
-                    "¡Opps! Tenemos problemas, intenta más tarde",
-                    "error"
-                )
-            );
-    };
+        getUserInfo(user, setUserInfo, openSnackbar);
+    }, [])
 
     return (
         <>
@@ -126,29 +64,13 @@ function FeedingUser() {
                                         <FormLabel>Vegetariano</FormLabel>
                                     </Grid>
                                     <Grid item xs={2}>
-                                        <Switch
-                                            color="primary"
-                                            onChange={handleUserTypeOfDiet}
-                                            name="Vegetariano"
-                                            checked={
-                                                "Vegetariano" ===
-                                                    userInfo.typeOfDiet || false
-                                            }
-                                        />
+                                        <Switch color="primary" onChange={e => handleUserTypeOfDiet(e, userInfo, setUserInfo)} name="Vegetariano" checked={ "Vegetariano" === userInfo.typeOfDiet || false } />
                                     </Grid>
                                     <Grid item xs={10}>
                                         <FormLabel>Vegano</FormLabel>
                                     </Grid>
                                     <Grid item xs={2}>
-                                        <Switch
-                                            color="primary"
-                                            onChange={handleUserTypeOfDiet}
-                                            name="Vegano"
-                                            checked={
-                                                "Vegano" ===
-                                                    userInfo.typeOfDiet || false
-                                            }
-                                        />
+                                        <Switch color="primary" onChange={e => handleUserTypeOfDiet(e, userInfo, setUserInfo)} name="Vegano" checked={ "Vegano" === userInfo.typeOfDiet || false } />
                                     </Grid>
                                 </Grid>
                             </FormGroup>
@@ -160,49 +82,22 @@ function FeedingUser() {
                     <Card variant="outlined">
                         <CardContent>
                             <FormGroup>
-                                {Object.keys(userInfo.allergies[0]).map(
-                                    (allergy) => (
-                                        <Grid item container key={allergy}>
-                                            <Grid item xs={10}>
-                                                <FormLabel>
-                                                    {allergy
-                                                        .charAt(0)
-                                                        .toUpperCase() +
-                                                        allergy
-                                                            .slice(1)
-                                                            .toLowerCase()}
-                                                </FormLabel>
-                                            </Grid>
-                                            <Grid item xs={2}>
-                                                <Switch
-                                                    name={allergy}
-                                                    onChange={
-                                                        handleUserAllergies
-                                                    }
-                                                    checked={
-                                                        userInfo.allergies[0][
-                                                            allergy
-                                                        ] || false
-                                                    }
-                                                    color="primary"
-                                                />
-                                            </Grid>
+                                {Object.keys(userInfo.allergies[0]).map( allergy => (
+                                    <Grid item container key={allergy}>
+                                        <Grid item xs={10}>
+                                            <FormLabel>{allergy.charAt(0).toUpperCase() + allergy.slice(1).toLowerCase()}</FormLabel>
                                         </Grid>
+                                        <Grid item xs={2}>
+                                            <Switch name={allergy} onChange={e => handleUserAllergies(e, userInfo, setUserInfo)} checked={userInfo.allergies[0][allergy] || false} color="primary" />
+                                        </Grid>
+                                    </Grid>
                                     )
                                 )}
                             </FormGroup>
                         </CardContent>
                     </Card>
                     <Box textAlign="center">
-                        <Button
-                            onClick={handleSubmit}
-                            type="submit"
-                            color="secondary"
-                            variant="contained"
-                            sx={{ marginTop: "40px", marginBottom: "40px" }}
-                        >
-                            Guardar
-                        </Button>
+                        <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained" sx={{ my: "2em"}} >Guardar</Button>
                     </Box>
                 </Box>
             </Container>

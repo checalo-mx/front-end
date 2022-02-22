@@ -28,8 +28,11 @@ function Scanner() {
     };
 
     return (
+        <div>
+            <Background 
+             />
         <Container>
-            <Background />
+            
             <Grid container justifyContent="center" rowSpacing={3}>
                 <Grid item xs={9}>
                     <Typography component="h1" variant="h5">
@@ -76,7 +79,8 @@ function Scanner() {
                 </Grid>
             </Grid>
         </Container>
-    );
+        </div>
+    )
 }
 
 export default Scanner;
