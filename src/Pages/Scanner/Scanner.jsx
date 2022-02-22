@@ -29,9 +29,11 @@ function Scanner () {
     }
 
     return (
-        
+        <div>
+            <Background 
+             />
         <Container>
-            <Background/>
+            
             <Grid container justifyContent="center" rowSpacing={3}>
                
                 <Grid item xs={9}>
@@ -64,6 +66,7 @@ function Scanner () {
                 </Grid>
             </Grid>
         </Container>
+        </div>
     )
 }
 
