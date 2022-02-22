@@ -1,4 +1,14 @@
-import { Button, Card, CardContent, Container, FormGroup, FormLabel, Grid, Switch, Typography } from "@mui/material";
+import {
+    Button,
+    Card,
+    CardContent,
+    Container,
+    FormGroup,
+    FormLabel,
+    Grid,
+    Switch,
+    Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,11 +37,25 @@ function FeedingUser () {
         <>
             <Background></Background>
             <Container>
-                <Typography component="h1" color="white" fontSize="2em" position="absolute" top="25vh" fontWeight="bold">{ `¡BIENVENIDO ${userInfo.name || ""}!` }</Typography>
+                <Typography
+                    component="h1"
+                    color="white"
+                    fontSize="2em"
+                    position="absolute"
+                    top="25vh"
+                    fontWeight="bold"
+                >{`¡BIENVENIDO ${userInfo.name || ""}!`}</Typography>
                 <Box component="form">
-                    <Typography component="h2" variant="h5" >Perfil de alimentación</Typography>
-                    <Typography component="small">Selecciona el perfil de alimentación que mejor vaya contigo. </Typography>
-                    <Typography component="h3" marginTop={2}>Tipo de dieta</Typography>
+                    <Typography component="h2" variant="h5">
+                        Perfil de alimentación
+                    </Typography>
+                    <Typography component="small">
+                        Selecciona el perfil de alimentación que mejor vaya
+                        contigo.{" "}
+                    </Typography>
+                    <Typography component="h3" marginTop={2}>
+                        Tipo de dieta
+                    </Typography>
                     <Card variant="outlined">
                         <CardContent>
                             <FormGroup>
@@ -52,7 +76,9 @@ function FeedingUser () {
                             </FormGroup>
                         </CardContent>
                     </Card>
-                    <Typography component="h3" marginTop={2}>Alergias</Typography>
+                    <Typography component="h3" marginTop={2}>
+                        Alergias
+                    </Typography>
                     <Card variant="outlined">
                         <CardContent>
                             <FormGroup>
@@ -65,17 +91,18 @@ function FeedingUser () {
                                             <Switch name={allergy} onChange={e => handleUserAllergies(e, userInfo, setUserInfo)} checked={userInfo.allergies[0][allergy] || false} color="primary" />
                                         </Grid>
                                     </Grid>
-                                ))}
+                                    )
+                                )}
                             </FormGroup>
                         </CardContent>
                     </Card>
-                    <Box textAlign="center">
-                        <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained" sx={{ my: "2em"}} >Guardar</Button>
+                    <Box textAlign="center" marginBottom={5} marginTop={4}>
+                        <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained">Guardar</Button>
                     </Box>
                 </Box>
             </Container>
         </>
-    )
+    );
 }
 
 export default FeedingUser;
