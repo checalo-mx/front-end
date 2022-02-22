@@ -5,7 +5,6 @@ import InputForm from "../../Components/Inputs/InputForm";
 import CardTitle from "../../Components/Titles/CardTitle";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 
-
 const ChangePassword = () => {
     return (
         <div>
@@ -35,18 +34,23 @@ const ChangePassword = () => {
                 </Grid>
             </Grid>
             <Grid item>
-              <Grid container xs={{ xs:2 }} justifyContent="center" marginTop={5} marginBottom={3}>
-                <Grid item >
-                <PrimaryButton
-                buttonText="Iniciar sesión"
-                color="primary"
-                type="submit"
-                variant="contained"
-                size="medium"
-              />
+                <Grid
+                    container
+                    xs={{ xs: 2 }}
+                    justifyContent="center"
+                    marginTop={5}
+                    marginBottom={5}
+                >
+                    <Grid item>
+                        <PrimaryButton
+                            buttonText="Iniciar sesión"
+                            color="primary"
+                            type="submit"
+                            variant="contained"
+                            size="medium"
+                        />
+                    </Grid>
                 </Grid>
-              </Grid>
-             
             </Grid>
         </div>
     );

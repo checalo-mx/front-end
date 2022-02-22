@@ -26,8 +26,8 @@ const HomeButtons = (props) => {
                             border: "2px solid #2DDA93",
                             borderRadius: "10px",
                             boxShadow: "1px 5px 5px gray",
-                            marginTop: "15px",
-                            marginBottom: "15px",
+                            // marginTop: "15px",
+                            // marginBottom: "15px",
                         }}
                     >
                         <Grid item xs={4}>

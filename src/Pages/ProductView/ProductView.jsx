@@ -73,13 +73,15 @@ const ProductView = (props) => {
                                 />
                                 <Typography align="center" component="p">
                                     Alergias con base en tu alimentación{" "}
-                                    {product.allergiesMatch ? product.allergiesMatch.join(" ") : ""}
+                                    {product.allergiesMatch
+                                        ? product.allergiesMatch.join(" ")
+                                        : ""}
                                 </Typography>
                             </OutlinedCard>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3} marginBottom={3}>
+                <Grid item xs={10} marginTop={3} marginBottom={5}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
@@ -91,7 +93,7 @@ const ProductView = (props) => {
                                 to="/scanner"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40}}
+                                style={{ width: 140, height: 40 }}
                             />
                         </Grid>
                         <Grid item>
@@ -104,7 +106,7 @@ const ProductView = (props) => {
                                 to="/home"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40}}
+                                style={{ width: 140, height: 40 }}
                             />
                         </Grid>
                     </Grid>

@@ -12,7 +12,6 @@ import Link from "@mui/material/Link";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { UserContext } from "../../Context/UserContext";
 
-
 const Login = (props) => {
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
 
@@ -26,7 +25,7 @@ const Login = (props) => {
         if (user.logged) {
             navigate("/home");
         }
-    },[]);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

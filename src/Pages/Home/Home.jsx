@@ -8,6 +8,7 @@ import Recipeslogo from "../../Pages/Svg/recipeslogo.svg";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
+import { Grid } from "@mui/material";
 
 const Home = () => {
     const { user, setUser } = useContext(UserContext);
@@ -22,28 +23,38 @@ const Home = () => {
     return (
         <div>
             <Background />
-            <HomeButtons
-                svg={Escanersvg}
-                buttonTitle="Escaner"
-                buttonSubTitle="Aquí puedes escanear."
-                address="/scanner"
-            />
-            <HomeButtons
-                svg={Profilelogo}
-                buttonTitle="Mi Perfil"
-                buttonSubTitle="Cambia tus preferencias"
-                address="/usersettings"
-            />
-            <HomeButtons
-                svg={Listlogo}
-                buttonTitle="Mis listas"
-                buttonSubTitle="Crea listas de productos"
-            />
-            <HomeButtons
-                svg={Recipeslogo}
-                buttonTitle="Recetas"
-                buttonSubTitle="Crea Recetas"
-            />
+            <Grid container justifyContent="center" flexDirection="column">
+                <Grid item marginTop={2} marginBottom={2}>
+                    <HomeButtons
+                        svg={Escanersvg}
+                        buttonTitle="Escaner"
+                        buttonSubTitle="Aquí puedes escanear."
+                        address="/scanner"
+                    />
+                </Grid>
+                <Grid item marginTop={2} marginBottom={2}>
+                    <HomeButtons
+                        svg={Profilelogo}
+                        buttonTitle="Mi Perfil"
+                        buttonSubTitle="Cambia tus preferencias"
+                        address="/usersettings"
+                    />
+                </Grid>
+                <Grid item marginTop={2} marginBottom={2}>
+                    <HomeButtons
+                        svg={Listlogo}
+                        buttonTitle="Mis listas"
+                        buttonSubTitle="Crea listas de productos"
+                    />
+                </Grid>
+                <Grid item marginTop={2} marginBottom={5}>
+                    <HomeButtons
+                        svg={Recipeslogo}
+                        buttonTitle="Recetas"
+                        buttonSubTitle="Crea Recetas"
+                    />
+                </Grid>
+            </Grid>
         </div>
     );
 };
