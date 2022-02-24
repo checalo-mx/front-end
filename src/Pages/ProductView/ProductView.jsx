@@ -7,12 +7,13 @@ import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import { makeStyles } from "@mui/styles";
 import Background from "../../Components/Backgrounds/Background";
-import { useParams, Link , useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
 import AlertMessage from "../../Components/Alerts/AlertMessage";
-
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -25,7 +26,7 @@ const ProductView = (props) => {
     const { barcode } = useParams();
     const [product, setProduct] = useState({});
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
-    const { user , setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,7 +36,6 @@ const ProductView = (props) => {
     }, []);
 
     useEffect(() => {
-        
         fetch(`https://checalo-mx-api.herokuapp.com/users/${barcode}`, {
             headers: {
                 token: user.token,
@@ -54,8 +54,14 @@ const ProductView = (props) => {
     const classes = useStyles();
     return (
         <div>
+            <Navbar />
             <Background />
-            <Grid container spacing={{ xs: 2 }} justifyContent="center">
+            <Grid
+                container
+                spacing={{ xs: 2 }}
+                justifyContent="center"
+                marginBottom={10}
+            >
                 <Grid item>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item xs={10}>
@@ -81,37 +87,34 @@ const ProductView = (props) => {
                                     src={product.image || Thinking}
                                     height="240px"
                                 />
-                                {product.allergiesMatch ? (
-                                    <AlertMessage
-                                        severity="error"
-                                        alertTitle="¡Cuidado!"
-                                        alertText={
-                                            `Este producto contiene alergenos ` +
-                                            product.allergiesMatch.join(", ")
-                                        }
-                                    />
-                                ) :  (
-                                    ""
-                                    // <AlertMessage severity="sucess" alertText="No encontramos ninguna alergia"/>
-                                )}
-                                {product.typeOfDietMatch ? (
-                                    <AlertMessage
-                                    alertTitle="¡Alerta!"
-                                        severity="warning"
-                                        alertText={
-                                            `Este producto podría contener ` +
-                                            product.allergiesMatch.join(", ")
-                                        }
-                                    />
-                                ) : (
-                                    ""
-                                    // <AlertMessage severity="sucess" alertText="No encontramos ninguna restricción con tu alimentación"/>
-                                )}
+                                <AlertMessage
+                                    severity={
+                                        product?.allergiesAlert?.severity || ""
+                                    }
+                                    alertTitle={
+                                        product?.allergiesAlert?.alertTitle ||
+                                        ""
+                                    }
+                                    alertText={
+                                        product?.allergiesAlert?.alertText || ""
+                                    }
+                                />
+                                <AlertMessage
+                                    severity={
+                                        product?.dietAlert?.severity || ""
+                                    }
+                                    alertTitle={
+                                        product?.dietAlert?.alertTitle || ""
+                                    }
+                                    alertText={
+                                        product?.dietAlert?.alertText || ""
+                                    }
+                                />
                             </OutlinedCard>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3} marginBottom={3}>
+                <Grid item xs={10} marginTop={3}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
@@ -142,6 +145,7 @@ const ProductView = (props) => {
                     </Grid>
                 </Grid>
             </Grid>
+            <FixedBottomNavbar />
         </div>
     );
 };

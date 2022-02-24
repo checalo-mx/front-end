@@ -12,7 +12,6 @@ import Link from "@mui/material/Link";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { UserContext } from "../../Context/UserContext";
 
-
 const Login = (props) => {
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
 
@@ -26,7 +25,7 @@ const Login = (props) => {
         if (user.logged) {
             navigate("/home");
         }
-    },[]);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -83,6 +82,7 @@ const Login = (props) => {
                         <Grid item xs={10}>
                             <InputForm
                                 label="Correo electrónico"
+                                required={true}
                                 value={email}
                                 onChangeValue={handleChangeEmail}
                             />
@@ -90,6 +90,7 @@ const Login = (props) => {
                         <Grid item xs={10}>
                             <InputForm
                                 label="Contraseña"
+                                required={true}
                                 type="password"
                                 value={password}
                                 onChangeValue={handleChangePassword}
