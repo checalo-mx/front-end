@@ -13,6 +13,7 @@ import { ModalCtx } from "../../Context/ModalContext";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 const UserSettings = () => {
     const { openModal, closeModal, confirm } = useContext(ModalCtx);
@@ -25,9 +26,8 @@ const UserSettings = () => {
             navigate("/login");
         }
     }, []);
-    
-    useEffect(() => {
 
+    useEffect(() => {
         if (confirm) {
             fetch(`https://checalo-mx-api.herokuapp.com/users/`, {
                 method: "DELETE",
@@ -197,7 +197,7 @@ const UserSettings = () => {
                 container
                 justifyContent="center"
                 rowSpacing={4}
-                marginBottom={5}
+                marginBottom={10}
             >
                 <Grid item xs={10}>
                     <Grid container justifyContent="space-between">
@@ -238,6 +238,7 @@ const UserSettings = () => {
                     </Grid>
                 </Grid>
             </Grid>
+            <FixedBottomNavbar />
         </div>
     );
 };

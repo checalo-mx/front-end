@@ -12,12 +12,11 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
 //
 import { SnackProvider } from "./Context/Snackcontext";
-import UserProvider, {UserContext} from "./Context/UserContext.jsx";
+import UserProvider, { UserContext } from "./Context/UserContext.jsx";
 import Navbar from "./Components/Navbar/Navbar";
 import { ModalProvider } from "./Context/ModalContext";
 
 function App() {
-
     return (
         <UserProvider>
             <SnackProvider>

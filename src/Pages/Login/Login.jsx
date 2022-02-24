@@ -82,6 +82,7 @@ const Login = (props) => {
                         <Grid item xs={10}>
                             <InputForm
                                 label="Correo electrónico"
+                                required={true}
                                 value={email}
                                 onChangeValue={handleChangeEmail}
                             />
@@ -89,6 +90,7 @@ const Login = (props) => {
                         <Grid item xs={10}>
                             <InputForm
                                 label="Contraseña"
+                                required={true}
                                 type="password"
                                 value={password}
                                 onChangeValue={handleChangePassword}
