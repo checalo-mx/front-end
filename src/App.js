@@ -10,6 +10,7 @@ import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
+import Mylists from "./Pages/Mylists/MyLists"
 //
 import { SnackProvider } from "./Context/Snackcontext";
 import UserProvider, {UserContext} from "./Context/UserContext.jsx";
@@ -46,6 +47,7 @@ function App() {
                             <Route path="/scanner" element={<Scanner />} />
                             <Route path="/home" element={<Home />} />
                             <Route path="/nav" element={<Navbar />} />
+                            <Route path="/mylists" element={<Mylists />} />
                         </Routes>
                     </BrowserRouter>
                 </ModalProvider>
