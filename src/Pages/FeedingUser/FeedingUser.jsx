@@ -16,6 +16,7 @@ import Background from "../../Components/Backgrounds/Background";
 import { UserContext } from "../../Context/UserContext";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { handleUserTypeOfDiet, handleUserAllergies, handleSubmit, getUserInfo } from "./functions";
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 function FeedingUser () {
     const [userInfo, setUserInfo] = useState({allergies: [{}]});
@@ -45,7 +46,7 @@ function FeedingUser () {
                     top="25vh"
                     fontWeight="bold"
                 >{`¡BIENVENIDO ${userInfo.name || ""}!`}</Typography>
-                <Box component="form">
+                <Box component="form" marginBottom={10}>
                     <Typography component="h2" variant="h5">
                         Perfil de alimentación
                     </Typography>
@@ -96,11 +97,12 @@ function FeedingUser () {
                             </FormGroup>
                         </CardContent>
                     </Card>
-                    <Box textAlign="center" marginBottom={5} marginTop={4}>
+                    <Box textAlign="center" marginTop={4}>
                         <Button onClick={e => handleSubmit(e, userInfo, user, openSnackbar, navigate)} type="submit" color="secondary" variant="contained">Guardar</Button>
                     </Box>
                 </Box>
             </Container>
+            <FixedBottomNavbar/>
         </>
     );
 }

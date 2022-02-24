@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { useEffect, useContext, useState } from "react";
-import SaveIcon from '@mui/icons-material/Save';
+import SaveIcon from "@mui/icons-material/Save";
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 const ChangePassword = () => {
     const { user, setUser } = useContext(UserContext);
@@ -107,12 +108,13 @@ const ChangePassword = () => {
                                 type="submit"
                                 variant="contained"
                                 size="medium"
-                                endIcon={<SaveIcon/>}
+                                endIcon={<SaveIcon />}
                             />
                         </Grid>
                     </Grid>
                 </Grid>
             </form>
+            <FixedBottomNavbar />
         </div>
     );
 };

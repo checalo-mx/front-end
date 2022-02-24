@@ -9,6 +9,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { Grid } from "@mui/material";
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 const Home = () => {
     const { user, setUser } = useContext(UserContext);
@@ -23,7 +24,7 @@ const Home = () => {
     return (
         <div>
             <Background />
-            <Grid container justifyContent="center" flexDirection="column">
+            <Grid container justifyContent="center" flexDirection="column" marginBottom={10}>
                 <Grid item marginTop={2} marginBottom={2}>
                     <HomeButtons
                         svg={Escanersvg}
@@ -47,7 +48,7 @@ const Home = () => {
                         buttonSubTitle="Crea listas de productos"
                     />
                 </Grid>
-                <Grid item marginTop={2} marginBottom={5}>
+                <Grid item marginTop={2}>
                     <HomeButtons
                         svg={Recipeslogo}
                         buttonTitle="Recetas"
@@ -55,6 +56,7 @@ const Home = () => {
                     />
                 </Grid>
             </Grid>
+            <FixedBottomNavbar />
         </div>
     );
 };
