@@ -53,7 +53,7 @@ const Landing = () => {
       buttonColor="primary"
       buttonText="¡Comienza ahora!"
       buttonVariant="contained"
-      buttonLink="/signup"
+      buttonLink="/login"
       classes={classes.headContainer}/>
       
       {/* Este es el loginContainer */}

@@ -8,6 +8,7 @@ function InputForm(props) {
       {props.label ? <InputLabel>{props.label}</InputLabel> : <></>}
       <Input
         disabled={props.disabled || false}
+        required={props.required || false}
         type={props.type}
         value={props.value}
         onChange={(e)=>props.onChangeValue(e.target.value)}
