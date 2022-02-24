@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const UserSettings = () => {
     const { openModal, closeModal, confirm } = useContext(ModalCtx);
@@ -124,6 +125,7 @@ const UserSettings = () => {
 
     return (
         <div>
+            <Navbar />
             <Background />
             <Grid
                 container

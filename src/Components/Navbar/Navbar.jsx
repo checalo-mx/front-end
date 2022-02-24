@@ -39,14 +39,16 @@ export default function Navbar() {
     <React.Fragment>
       <Box
         sx={{
+          width: "100%",
+          position: "fixed",
           display: "flex",
           alignItems: "center",
-          textAlign: "center",
+          justifyContent: "space-between",
           justifyContent: "flex-end",
         }}
       >
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+        {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
+        <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
