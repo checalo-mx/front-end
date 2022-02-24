@@ -93,7 +93,7 @@ const ProductView = (props) => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3} marginBottom={5}>
+                <Grid item xs={10} marginTop={3} marginBottom={3}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
