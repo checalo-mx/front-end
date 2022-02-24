@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "../../Components/Backgrounds/Background";
 import BackButton from "../../Components/Buttons/BackButton";
@@ -8,11 +8,12 @@ import CheckboxGroup from "../../Components/CheckboxGroup/CheckboxGroup";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import InputForm from "../../Components/Inputs/InputForm";
 import CardTitle from "../../Components/Titles/CardTitle";
+import { UserContext } from "../../Context/UserContext";
+
 
 const Signup = () => {
     const [allergies, setAllergies] = useState([]);
     const [diets, setDiets] = useState([]);
-
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -20,7 +21,14 @@ const Signup = () => {
     const [diet, setDiet] = useState("");
     const [userAllergies, setUserAllergies] = useState({});
     const [confirmPassword, setConfirmPassword] = useState("");
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.logged) {
+            navigate("/home");
+        }
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -113,6 +121,7 @@ const Signup = () => {
                         <InputForm
                             label="Nombre"
                             type="text"
+                            required={true}
                             value={name}
                             onChangeValue={handleChangeName}
                         />
@@ -121,6 +130,7 @@ const Signup = () => {
                         <InputForm
                             label="Apellido"
                             type="text"
+                            required={true}
                             value={lastName}
                             onChangeValue={handleLastName}
                         />
@@ -129,6 +139,7 @@ const Signup = () => {
                         <InputForm
                             label="Email"
                             type="text"
+                            required={true}
                             value={email}
                             onChangeValue={handleEmail}
                         />
@@ -137,6 +148,7 @@ const Signup = () => {
                         <InputForm
                             label="Contraseña"
                             type="password"
+                            required={true}
                             value={password}
                             onChangeValue={handlePassword}
                         />
@@ -145,6 +157,7 @@ const Signup = () => {
                         <InputForm
                             label="Confirmar contraseña"
                             type="password"
+                            required={true}
                             value={confirmPassword}
                             onChangeValue={handleConfirmPassword}
                         />
