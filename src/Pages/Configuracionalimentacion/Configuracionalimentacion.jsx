@@ -11,6 +11,7 @@ import OutlinedCard from '../../Components/Cards/OutlinedCard';
 import Switchs from "../../Components/Switchs/Switchs";
 import Typography from '@mui/material/Typography';
 import CardAlimentacion from "../../Components/Cards/CardAlimentacion"
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 const Configuracionalimentacion = () => {
     return (
@@ -26,7 +27,7 @@ const Configuracionalimentacion = () => {
 
 
             </Grid>
-
+            <FixedBottomNavbar/>
         </div>
 
            )  };

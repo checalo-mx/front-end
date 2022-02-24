@@ -12,6 +12,7 @@ import { SnackCtx } from "../../Context/Snackcontext";
 import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
 import AlertMessage from "../../Components/Alerts/AlertMessage";
+import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -53,7 +54,7 @@ const ProductView = (props) => {
     return (
         <div>
             <Background />
-            <Grid container spacing={{ xs: 2 }} justifyContent="center">
+            <Grid container spacing={{ xs: 2 }} justifyContent="center" marginBottom={10}>
                 <Grid item>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item xs={10}>
@@ -80,20 +81,33 @@ const ProductView = (props) => {
                                     height="240px"
                                 />
                                 <AlertMessage
-                                    severity={product?.allergiesAlert?.severity || ""}
-                                    alertTitle={product?.allergiesAlert?.alertTitle || ""}
-                                    alertText={product?.allergiesAlert?.alertText || ""}
+                                    severity={
+                                        product?.allergiesAlert?.severity || ""
+                                    }
+                                    alertTitle={
+                                        product?.allergiesAlert?.alertTitle ||
+                                        ""
+                                    }
+                                    alertText={
+                                        product?.allergiesAlert?.alertText || ""
+                                    }
                                 />
                                 <AlertMessage
-                                    severity={product?.dietAlert?.severity || ""}
-                                    alertTitle={product?.dietAlert?.alertTitle || ""}
-                                    alertText={product?.dietAlert?.alertText || ""}
+                                    severity={
+                                        product?.dietAlert?.severity || ""
+                                    }
+                                    alertTitle={
+                                        product?.dietAlert?.alertTitle || ""
+                                    }
+                                    alertText={
+                                        product?.dietAlert?.alertText || ""
+                                    }
                                 />
                             </OutlinedCard>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={10} marginTop={3} marginBottom={5}>
+                <Grid item xs={10} marginTop={3}>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item>
                             <PrimaryButton
@@ -124,6 +138,7 @@ const ProductView = (props) => {
                     </Grid>
                 </Grid>
             </Grid>
+            <FixedBottomNavbar />
         </div>
     );
 };
