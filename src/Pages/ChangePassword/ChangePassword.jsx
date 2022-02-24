@@ -99,7 +99,7 @@ const ChangePassword = () => {
                         xs={{ xs: 2 }}
                         justifyContent="center"
                         marginTop={5}
-                        marginBottom={3}
+                        marginBottom={10}
                     >
                         <Grid item>
                             <PrimaryButton
