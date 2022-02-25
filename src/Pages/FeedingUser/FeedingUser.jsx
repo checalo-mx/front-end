@@ -52,7 +52,7 @@ function FeedingUser() {
                     position="absolute"
                     top="25vh"
                     fontWeight="bold"
-                >{`¡BIENVENIDO ${userInfo.name || ""}!`}</Typography>
+                >{`¡Bienvenido ${userInfo.name || ""}!`}</Typography>
                 <Box component="form" marginBottom={10}>
                     <Typography component="h2" variant="h5">
                         Perfil de alimentación

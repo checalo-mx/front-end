@@ -7,7 +7,7 @@ const Background = () => {
   return (
     <div className={styles.fondoVerde} position="fixed">
       <Grid container justifyContent="center" flexDirection="column" alignItems="center" position="fixed">
-        <Grid item marginTop={10}>
+        <Grid item marginTop={2}>
           <img src={logochecalo} alt="logo checalo" height="100" width="100" />
         </Grid>
         <Grid item >

@@ -46,7 +46,7 @@ function App() {
                             />
                             <Route path="/scanner" element={<Scanner />} />
                             <Route path="/home" element={<Home />} />
-                            <Route path="/mylists" element={<Mylists/>} />
+                            <Route path="/mylists/:id" element={<Mylists/>} />
                         </Routes>
                     </BrowserRouter>
                 </ModalProvider>
