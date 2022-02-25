@@ -38,6 +38,7 @@ function Scanner() {
                     container
                     justifyContent="center"
                     rowSpacing={3}
+                    marginTop={1}
                     marginBottom={10}
                 >
                     <Grid item xs={9}>
@@ -56,6 +57,7 @@ function Scanner() {
                         container
                         xs={9}
                         columnSpacing={2}
+                        marginTop={3}
                         marginBottom={5}
                     >
                         <Grid item xs={6}>
