@@ -13,6 +13,7 @@ import Thinking from "../Svg/thinking.svg";
 import { UserContext } from "../../Context/UserContext";
 import AlertMessage from "../../Components/Alerts/AlertMessage";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const useStyles = makeStyles({
     productViewButton: {
@@ -53,6 +54,7 @@ const ProductView = (props) => {
     const classes = useStyles();
     return (
         <div>
+            <Navbar />
             <Background />
             <Grid
                 container

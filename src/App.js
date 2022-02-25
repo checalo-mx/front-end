@@ -44,7 +44,6 @@ function App() {
                             />
                             <Route path="/scanner" element={<Scanner />} />
                             <Route path="/home" element={<Home />} />
-                            <Route path="/nav" element={<Navbar />} />
                         </Routes>
                     </BrowserRouter>
                 </ModalProvider>

@@ -10,6 +10,7 @@ import { SnackCtx } from "../../Context/Snackcontext";
 import { useEffect, useContext, useState } from "react";
 import SaveIcon from "@mui/icons-material/Save";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const ChangePassword = () => {
     const { user, setUser } = useContext(UserContext);
@@ -60,6 +61,7 @@ const ChangePassword = () => {
 
     return (
         <div>
+            <Navbar />
             <Background />
             <form onSubmit={handleSubmit}>
                 <Grid

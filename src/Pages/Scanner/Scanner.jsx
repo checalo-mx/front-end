@@ -6,6 +6,7 @@ import { FlashOn, FlashOff, HomeTwoTone } from "@mui/icons-material";
 import Background from "../../Components/Backgrounds/Background";
 import { UserContext } from "../../Context/UserContext";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 function Scanner() {
     const [tourch, setTourch] = useState(false);
@@ -30,6 +31,7 @@ function Scanner() {
 
     return (
         <div>
+            <Navbar />
             <Background />
             <Container>
                 <Grid
