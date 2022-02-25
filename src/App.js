@@ -16,6 +16,7 @@ import { SnackProvider } from "./Context/Snackcontext";
 import UserProvider, { UserContext } from "./Context/UserContext.jsx";
 import Navbar from "./Components/Navbar/Navbar";
 import { ModalProvider } from "./Context/ModalContext";
+import MyLists from "./Pages/Mylists/MyLists";
 
 function App() {
     return (
@@ -45,11 +46,7 @@ function App() {
                             />
                             <Route path="/scanner" element={<Scanner />} />
                             <Route path="/home" element={<Home />} />
-<<<<<<< HEAD
-                            <Route path="/nav" element={<Navbar />} />
-                            <Route path="/mylists" element={<Mylists />} />
-=======
->>>>>>> fa57ec88bf3b632a9143123f94b1c5b053b1761d
+                            <Route path="/mylists" element={<Mylists/>} />
                         </Routes>
                     </BrowserRouter>
                 </ModalProvider>
