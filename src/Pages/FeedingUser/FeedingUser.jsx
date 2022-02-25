@@ -46,15 +46,20 @@ function FeedingUser() {
             <Background></Background>
             <Container>
                 <Typography
+                    align="center"
+                    marginTop={1}
+                    marginBottom={2}
                     component="h1"
-                    color="white"
                     fontSize="2em"
-                    position="absolute"
                     top="25vh"
-                    fontWeight="bold"
                 >{`¡Bienvenido ${userInfo.name || ""}!`}</Typography>
                 <Box component="form" marginBottom={10}>
-                    <Typography component="h2" variant="h5">
+                    <Typography
+                        component="h2"
+                        variant="h5"
+                        align="center"
+                        marginBottom={2}
+                    >
                         Perfil de alimentación
                     </Typography>
                     <Typography component="small">
