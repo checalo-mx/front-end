@@ -10,11 +10,13 @@ import ProductView from "./Pages/ProductView/ProductView";
 import Landing from "./Pages/Landing/Landing";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Scanner from "./Pages/Scanner/Scanner";
+import Mylists from "./Pages/Mylists/MyLists"
 //
 import { SnackProvider } from "./Context/Snackcontext";
 import UserProvider, { UserContext } from "./Context/UserContext.jsx";
 import Navbar from "./Components/Navbar/Navbar";
 import { ModalProvider } from "./Context/ModalContext";
+import MyLists from "./Pages/Mylists/MyLists";
 
 function App() {
     return (
@@ -44,6 +46,7 @@ function App() {
                             />
                             <Route path="/scanner" element={<Scanner />} />
                             <Route path="/home" element={<Home />} />
+                            <Route path="/mylists/:id" element={<Mylists/>} />
                         </Routes>
                     </BrowserRouter>
                 </ModalProvider>
