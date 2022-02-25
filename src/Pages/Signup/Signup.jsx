@@ -105,7 +105,6 @@ const Signup = () => {
     return (
         <div>
             <Background />
-            <BackButton />
             <form onSubmit={handleSubmit}>
                 <Grid
                     container
@@ -113,9 +112,9 @@ const Signup = () => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <Grid item xs={10}>
+                    <Grid item xs={10} marginTop={2}>
                         <CardTitle titleText="Únete a checalo.mx" />
-                        <p>¡Ya casi estás!</p>
+                        <p style={{marginTop: "10px"}}>¡Ya casi estás!</p>
                     </Grid>
                     <Grid item xs={10}>
                         <InputForm

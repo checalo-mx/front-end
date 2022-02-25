@@ -65,7 +65,7 @@ const ProductView = (props) => {
                 <Grid item>
                     <Grid container spacing={{ xs: 2 }} justifyContent="center">
                         <Grid item xs={10}>
-                            <Typography align="center" variant="h4">
+                            <Typography align="center" variant="h5">
                                 {product.title +
                                     (product.name || "") +
                                     (product.qty || "")}
@@ -126,7 +126,7 @@ const ProductView = (props) => {
                                 to="/scanner"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40 }}
+                                style={{ width: 140, height: 40 }}
                             />
                         </Grid>
                         <Grid item>
@@ -139,7 +139,7 @@ const ProductView = (props) => {
                                 to="/home"
                                 component={Link}
                                 variant="contained"
-                                style={{ width: 145, height: 40 }}
+                                style={{ width: 140, height: 40 }}
                             />
                         </Grid>
                     </Grid>
