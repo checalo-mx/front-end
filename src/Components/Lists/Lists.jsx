@@ -6,6 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import ReactTimeAgo from 'react-time-ago'
+
 
 const Lists = (props) => {
   return (
@@ -28,7 +30,7 @@ const Lists = (props) => {
                 >
                  
                 </Typography>
-                {"Escaneaste el día: " + props.date}
+                {"Escaneaste el día: "} 
               </React.Fragment>
             }
           />
