@@ -13,6 +13,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "helmet": "^5.0.2",
+    "javascript-time-ago": "^2.3.13",
     "node-sass": "^7.0.0",
     "notistack": "^2.0.3",
     "react": "^17.0.2",
@@ -21,7 +22,10 @@
     "react-qr-barcode-scanner": "^1.0.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-time-ago": "^7.1.9",
+    "react-timeago": "^6.2.1",
     "styled-components": "^5.3.3",
+    "timeago": "^1.6.7",
     "web-vitals": "^2.1.2"
   },
   "scripts": {

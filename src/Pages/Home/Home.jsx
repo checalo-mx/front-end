@@ -13,59 +13,77 @@ import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNav
 import Navbar from "../../Components/Navbar/Navbar";
 
 const Home = () => {
-    const { user, setUser } = useContext(UserContext);
-    const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (user.logged === false) {
-            navigate("/login");
-        }
-    }, []);
+  useEffect(() => {
+    if (user.logged === false) {
+      navigate("/login");
+    }
+  }, []);
 
-    return (
-        <div>
-            <Navbar />
-            <Background />
-            <Grid
-                container
-                justifyContent="center"
-                flexDirection="column"
-                marginBottom={10}
-            >
-                <Grid item marginTop={2} marginBottom={2}>
-                    <HomeButtons
-                        svg={Escanersvg}
-                        buttonTitle="Escaner"
-                        buttonSubTitle="Aquí puedes escanear."
-                        address="/scanner"
-                    />
-                </Grid>
-                <Grid item marginTop={2} marginBottom={2}>
-                    <HomeButtons
-                        svg={Profilelogo}
-                        buttonTitle="Mi Perfil"
-                        buttonSubTitle="Cambia tus preferencias"
-                        address="/usersettings"
-                    />
-                </Grid>
-                <Grid item marginTop={2} marginBottom={2}>
-                    <HomeButtons
-                        svg={Listlogo}
-                        buttonTitle="Mis listas"
-                        buttonSubTitle="Crea listas de productos"
-                    />
-                </Grid>
-                <Grid item marginTop={2}>
-                    <HomeButtons
-                        svg={Recipeslogo}
-                        buttonTitle="Recetas"
-                        buttonSubTitle="Crea Recetas"
-                    />
-                </Grid>
-            </Grid>
-            <FixedBottomNavbar />
-        </div>
+  const [listId, setListId] = useState("");
+
+  useEffect(() => {
+    fetch("https://checalo-mx-api.herokuapp.com/list", {
+      method: "GET",
+      headers: {
+        token: user.token,
+      },
+    }).then((result) =>
+      result.json().then((data) => {
+       setListId(data.lists[0]["_id"]);
+      })
     );
+  }, []);
+
+  console.log("Veamos el valor", listId);
+
+  return (
+    <div>
+      <Navbar />
+      <Background />
+      <Grid
+        container
+        justifyContent="center"
+        flexDirection="column"
+        marginBottom={10}
+      >
+        <Grid item marginTop={2} marginBottom={2}>
+          <HomeButtons
+            svg={Escanersvg}
+            buttonTitle="Escaner"
+            buttonSubTitle="Aquí puedes escanear tus productos."
+            address="/scanner"
+          />
+        </Grid>
+        <Grid item marginTop={2} marginBottom={2}>
+          <HomeButtons
+            svg={Profilelogo}
+            buttonTitle="Mi Perfil"
+            buttonSubTitle="Modifica preferencias de alimentación."
+            address="/usersettings"
+          />
+        </Grid>
+        <Grid item marginTop={2} marginBottom={2}>
+          <HomeButtons
+            svg={Listlogo}
+            buttonTitle="Mis listas"
+            buttonSubTitle="Crea listas de productos"
+            address={`/mylists/${listId}`}
+          />
+        </Grid>
+        <Grid item marginTop={2}>
+          <HomeButtons
+            svg={Recipeslogo}
+            buttonTitle="Recetas"
+            buttonSubTitle="Crea Recetas"
+          />
+        </Grid>
+      </Grid>
+      <FixedBottomNavbar />
+    </div>
+  );
 };
 
 export default Home;
