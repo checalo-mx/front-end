@@ -12,6 +12,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Lists from "../../Components/Lists/Lists";
 import { useParams,useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
+import ReactTimeAgo from 'react-time-ago'
 
 export default function AlignItemsList() {
   const [list, setList] = useState([]);
@@ -31,8 +32,7 @@ export default function AlignItemsList() {
     );
   }, []);
 
-  console.log("Ejemplos Listas", list);
-
+  console.log("Ejemplos Listas", list.createAt);
   return (
     <div>
       <Navbar />
@@ -59,11 +59,12 @@ export default function AlignItemsList() {
               key={index}
               imgAvatar={item.img || ""}
               productTitle={item.name || ""}
-              date={item.createdAt || ""}
-              
-            ></Lists>
+              date={item.createAt || ""}
+             >
+            </Lists>
+            
           ))}
-        </Grid>
+   </Grid>
       </Grid>
     </div>
   );
