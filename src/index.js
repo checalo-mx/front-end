@@ -5,10 +5,10 @@ import App from "./App";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { teal, lightBlue } from "@mui/material/colors";
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
+import es from 'javascript-time-ago/locale/es.json'
 import ru from 'javascript-time-ago/locale/ru.json'
 
-TimeAgo.addDefaultLocale(en)
+TimeAgo.addDefaultLocale(es)
 TimeAgo.addLocale(ru)
 
 const theme = createTheme({
