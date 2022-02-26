@@ -6,16 +6,20 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-
+import ReactTimeAgo from 'react-time-ago'
+import { useNavigate } from "react-router-dom";
 
 const Lists = (props) => {
+
+  const navigate = useNavigate();
+
   return (
     <div>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper"  }}>
+      <List sx={{bgcolor: "background.paper"}}  onClick={()=> navigate(`/productview/${props.code}`)}>
 
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="Imagen Producto" src={props.imgAvatar} />
+            <Avatar alt="Imagen Producto" src={props.imgAvatar}/>
           </ListItemAvatar>
           <ListItemText
             primary={props.productTitle}
@@ -29,11 +33,12 @@ const Lists = (props) => {
                 >
                  
                 </Typography>
-                {"Escaneaste el día: " + props.date}
+                {"Escaneado: "} <ReactTimeAgo date={props.date} locale="es-ES"/>
               </React.Fragment>
             }
           />
         </ListItem>
+        <Divider variant="inset" component="li" />
       </List>
     </div>
   );
