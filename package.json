@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.0",
     "helmet": "^5.0.2",
     "javascript-time-ago": "^2.3.13",
     "node-sass": "^7.0.0",

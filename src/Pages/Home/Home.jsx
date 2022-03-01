@@ -12,6 +12,8 @@ import { Grid } from "@mui/material";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 import Navbar from "../../Components/Navbar/Navbar";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const Home = () => {
   const [listId, setListId] = useState("");
 
   useEffect(() => {
-    fetch("https://checalo-mx-api.herokuapp.com/list", {
+    fetch(`${endPoint}/list`, {
       method: "GET",
       headers: {
         token: user.token,
@@ -68,8 +70,8 @@ const Home = () => {
         <Grid item marginTop={2} marginBottom={2}>
           <HomeButtons
             svg={Listlogo}
-            buttonTitle="Mis listas"
-            buttonSubTitle="Crea listas de productos"
+            buttonTitle="Historial"
+            buttonSubTitle="Consulta tu historial de escaneos"
             address={`/mylists/${listId}`}
           />
         </Grid>

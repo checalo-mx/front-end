@@ -12,7 +12,10 @@ import Link from "@mui/material/Link";
 import { SnackCtx } from "../../Context/Snackcontext";
 import { UserContext } from "../../Context/UserContext";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 const Login = (props) => {
+
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
 
     const [email, setEmail] = useState("");
@@ -30,7 +33,7 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("https://checalo-mx-api.herokuapp.com/login", {
+        fetch(`${endPoint}/login`, {
             method: "POST",
             body: JSON.stringify({ email, password }), // data can be `string` or {object}!
             headers: {
@@ -45,6 +48,7 @@ const Login = (props) => {
 
                     openSnackbar("¡Bienvenido!", "success");
                     navigate("/home");
+                    console.log("funciona", endPoint)
                 } else {
                     openSnackbar("Usuario y/o contraseña incorrecto", "error");
                 }

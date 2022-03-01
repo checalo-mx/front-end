@@ -8,6 +8,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 export default function AlignItemsList() {
     const [list, setList] = useState([]);
     const { user, setUser } = useContext(UserContext);
@@ -15,7 +17,7 @@ export default function AlignItemsList() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`https://checalo-mx-api.herokuapp.com/list/${id}`, {
+        fetch(`${endPoint}/list/${id}`, {
             headers: {
                 token: user.token,
             },

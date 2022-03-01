@@ -2,14 +2,15 @@ import { Grid } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "../../Components/Backgrounds/Background";
-import BackButton from "../../Components/Buttons/BackButton";
 import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import CheckboxGroup from "../../Components/CheckboxGroup/CheckboxGroup";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import InputForm from "../../Components/Inputs/InputForm";
 import CardTitle from "../../Components/Titles/CardTitle";
 import { UserContext } from "../../Context/UserContext";
+import { SnackCtx } from "../../Context/Snackcontext";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
 
 const Signup = () => {
     const [allergies, setAllergies] = useState([]);
@@ -22,6 +23,7 @@ const Signup = () => {
     const [userAllergies, setUserAllergies] = useState({});
     const [confirmPassword, setConfirmPassword] = useState("");
     const { user, setUser } = useContext(UserContext);
+    const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,7 +35,7 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("https://checalo-mx-api.herokuapp.com/users", {
+        fetch(`${endPoint}/users`, {
             method: "POST",
             body: JSON.stringify({
                 name,
@@ -51,6 +53,7 @@ const Signup = () => {
             .then((response) => {
                 console.log("Success:", response);
                 if (response.ok) {
+                    openSnackbar("¡Usuario creado! - ¡Inicia sesión!", "success");
                     navigate("/login");
                 }
             })
@@ -58,7 +61,7 @@ const Signup = () => {
     };
 
     useEffect(() => {
-        fetch("https://checalo-mx-api.herokuapp.com/signup").then((result) =>
+        fetch(`${endPoint}/signup`).then((result) =>
             result.json().then((data) => {
                 setAllergies(data.allergies);
                 setDiets(data.namesOfDiet);
