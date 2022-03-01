@@ -16,6 +16,8 @@ import PrimaryButton from "../../Components/Buttons/Primary/PrimaryButton";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 import Navbar from "../../Components/Navbar/Navbar";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 const UserSettings = () => {
     const { openModal, closeModal, confirm } = useContext(ModalCtx);
     const { openSnackbar } = useContext(SnackCtx);
@@ -30,7 +32,7 @@ const UserSettings = () => {
 
     useEffect(() => {
         if (confirm) {
-            fetch(`https://checalo-mx-api.herokuapp.com/users/`, {
+            fetch(`${endPoint}/users/`, {
                 method: "DELETE",
                 headers: {
                     token: user.token,
@@ -54,7 +56,7 @@ const UserSettings = () => {
     const [edit, setEdit] = useState(true);
 
     useEffect(() => {
-        fetch("https://checalo-mx-api.herokuapp.com/users/info", {
+        fetch(`${endPoint}/users/info`, {
             headers: {
                 token: user.token,
             },
@@ -78,7 +80,7 @@ const UserSettings = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("https://checalo-mx-api.herokuapp.com/users", {
+        fetch(`${endPoint}/users`, {
             method: "PATCH",
             body: JSON.stringify(userInfo),
             headers: {

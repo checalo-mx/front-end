@@ -15,6 +15,8 @@ import AlertMessage from "../../Components/Alerts/AlertMessage";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 import Navbar from "../../Components/Navbar/Navbar";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 const useStyles = makeStyles({
     productViewButton: {
         width: "140px",
@@ -36,7 +38,7 @@ const ProductView = (props) => {
     }, []);
 
     useEffect(() => {
-        fetch(`https://checalo-mx-api.herokuapp.com/users/${barcode}`, {
+        fetch(`${endPoint}/users/${barcode}`, {
             headers: {
                 token: user.token,
             },

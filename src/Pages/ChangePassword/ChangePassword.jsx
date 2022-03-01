@@ -12,6 +12,8 @@ import SaveIcon from "@mui/icons-material/Save";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 import Navbar from "../../Components/Navbar/Navbar";
 
+const endPoint = process.env.REACT_APP_END_POINT_URL;
+
 const ChangePassword = () => {
     const { user, setUser } = useContext(UserContext);
     const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
@@ -31,7 +33,7 @@ const ChangePassword = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("https://checalo-mx-api.herokuapp.com/users/password", {
+        fetch(`${endPoint}/users/password`, {
             method: "PATCH",
             body: JSON.stringify({ password }),
             headers: {
@@ -43,9 +45,9 @@ const ChangePassword = () => {
             .then((response) => {
                 if (response.ok) {
                     openSnackbar("Contraseña actualizada", "success");
-                    console.log(response);
                     setUser({ logged: false });
                     navigate("/");
+                    console.log(response);
                 } else {
                     openSnackbar(
                         "No pudimos actualizar tu contraseña",
