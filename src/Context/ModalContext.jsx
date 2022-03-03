@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { CloseFullscreenOutlined } from "@mui/icons-material";
 import errorSymbol from "../Pages/Svg/error.svg";
+import TextField from '@mui/material/TextField';
 
 const style = {
     position: "absolute",
@@ -88,6 +89,7 @@ export const ModalProvider = ({ children }) => {
         okButtonText: "button text",
         cancelColor: "secondary",
         cancelButtonText: "cancel text",
+        inputModal: "yes" || <TextField id="standard-basic" label="Standard" variant="standard" />
     });
 
     function handleConfirm() {
@@ -101,7 +103,8 @@ export const ModalProvider = ({ children }) => {
         okColor,
         okButtonText,
         cancelColor,
-        cancelButtonText
+        cancelButtonText,
+        inputModal
     ) {
         setModalSettings({
             modalTitle,
@@ -111,6 +114,7 @@ export const ModalProvider = ({ children }) => {
             okButtonText,
             cancelColor,
             cancelButtonText,
+            inputModal
         });
         setOpen(true);
         // console.log(modalSettings);
@@ -126,6 +130,7 @@ export const ModalProvider = ({ children }) => {
             okButtonText: "button text",
             cancelColor: "secondary",
             cancelButtonText: "cancel text",
+            inputModal: "yes" || <TextField id="standard-basic" label="Standard" variant="standard" />
         });
         setOpen(false);
     }
