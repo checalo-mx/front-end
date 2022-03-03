@@ -7,11 +7,19 @@ import Background from "../../Components/Backgrounds/Background";
 import { UserContext } from "../../Context/UserContext";
 import FixedBottomNavbar from "../../Components/FixedBottomNavbar/FixedBottomNavbar";
 import Navbar from "../../Components/Navbar/Navbar";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import { SnackCtx } from "../../Context/Snackcontext";
 
 function Scanner() {
     const [tourch, setTourch] = useState(false);
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
+    const [manualSearch, setManualSearch] = useState(false);
+    const [barcode, setBarcode] = useState("");
+    const { openSnackbar, closeSnackbar } = useContext(SnackCtx);
 
     useEffect(() => {
         if (user.logged === false) {
@@ -27,6 +35,10 @@ function Scanner() {
 
     const handleTourch = () => {
         setTourch(!tourch);
+    };
+
+    const handleManualSearch = () => {
+        setManualSearch(!manualSearch);
     };
 
     return (
@@ -80,15 +92,47 @@ function Scanner() {
                                 fullWidth
                                 startIcon={<HomeTwoTone />}
                                 variant="outlined"
-                                component={Link}
-                                to="/Home"
                                 sx={{
                                     height: "100%",
                                     "& .MuiSvgIcon-root": { fontSize: "24px" },
                                 }}
+                                onClick={handleManualSearch}
                             >
-                                Home
+                                Búsqueda manual
                             </Button>
+                        </Grid>
+                        <Grid item xs={12} sx={{ marginTop: "40px" }}>
+                            <OutlinedInput
+                                sx={{
+                                    display: manualSearch ? "flex" : "none",
+                                }}
+                                type="text"
+                                value={barcode}
+                                required
+                                onChange={(e) => setBarcode(e.target.value)}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() => {
+                                                if (barcode.length >= 8) {
+                                                    navigate(
+                                                        `/productview/${barcode}`
+                                                    );
+                                                } else {
+                                                    openSnackbar(
+                                                        "Algo anda mal con el código ingresado",
+                                                        "error"
+                                                    );
+                                                }
+                                            }}
+                                            edge="end"
+                                        >
+                                            <SearchIcon />
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                placeholder="Código de barras"
+                            />
                         </Grid>
                     </Grid>
                 </Grid>
